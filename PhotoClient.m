@@ -67,7 +67,8 @@
 			[base stringByAppendingString: @"/login.do"]];
 	
 		// We should post the credentials so they don't show up in the logs
-		NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:url
+		NSMutableURLRequest *theRequest=[[NSMutableURLRequest alloc]
+			initWithURL: url
 			cachePolicy:NSURLRequestReloadIgnoringCacheData
 			timeoutInterval:60.0];
 		[theRequest setHTTPMethod: @"POST"];
@@ -92,6 +93,7 @@
 		}
 		
 		[url release];
+		[theRequest autorelease];
 	} else {
 		NSLog(@"Not authenticating (but logging out) %@ - no username", base);
 		NSURL *url=[[NSURL alloc] initWithString:
