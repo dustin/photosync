@@ -27,6 +27,7 @@
 	[_loc setUsername:[username stringValue]];
 	[_loc setPassword:[password stringValue]];
 	[_loc setDestDir:[destination stringValue]];
+	[_loc setForUser:[forUser stringValue]];
 	// Throw away our copy
 	[_loc release];
 	_loc = nil;
@@ -48,6 +49,7 @@
 	[url setStringValue:[_loc url]];
 	[username setStringValue:[_loc username]];
 	[password setStringValue:[_loc password]];
+	[forUser setStringValue:[_loc forUser]];
 	[destination setStringValue:[_loc destDir]];
 }
 

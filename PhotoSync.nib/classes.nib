@@ -18,7 +18,7 @@
             ACTIONS = {browse = id; cancel = id; save = id; }; 
             CLASS = LocEditController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {destination = id; password = id; url = id; username = id; }; 
+            OUTLETS = {destination = id; forUser = id; password = id; url = id; username = id; }; 
             SUPERCLASS = NSWindowController; 
         }, 
         {CLASS = Locations; LANGUAGE = ObjC; SUPERCLASS = NSObject; }

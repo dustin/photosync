@@ -28,7 +28,28 @@
 	[super dealloc];
 }
 
--(BOOL)authenticateTo:(NSString *)base user:(NSString *)u passwd:(NSString *)p
+-(BOOL)tryRequest:(NSURLRequest *)theRequest
+{
+	BOOL rv=FALSE;
+	NSLog(@"Trying %@", [theRequest URL]);
+	NSHTTPURLResponse *resp=nil;
+	NSError *err=nil;
+	[NSURLConnection sendSynchronousRequest:theRequest
+		returningResponse:&resp error:&err];
+	int rc=500;
+	if(resp != nil) {
+		rc=[resp statusCode];
+	}
+	if(rc == 200){
+		rv=TRUE;
+	} else {
+		NSLog(@"%@ failed (rc=%d).", [theRequest URL], rc);
+	}
+	return(rv);
+}
+
+-(BOOL)authenticateTo:(NSString *)base
+	user:(NSString *)u passwd:(NSString *)p forUser:(NSString *)altUser
 {
 	BOOL rv=FALSE;
 	if(u != nil && [u length] > 0) {
@@ -46,21 +67,21 @@
 		[theRequest setHTTPBody:
 			[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
 		[bodyString release];
-	
-		NSHTTPURLResponse *resp=nil;
-		NSError *err=nil;
-		[NSURLConnection sendSynchronousRequest:theRequest
-			returningResponse:&resp error:&err];
-		int rc=500;
-		if(resp != nil) {
-			rc=[resp statusCode];
+
+		rv=[self tryRequest:theRequest];
+
+		if(rv == TRUE && altUser != nil && [altUser length] > 0) {
+			NSLog(@"Attempting to setuid");
+			[url release];
+			url=[[NSURL alloc] initWithString:
+				[NSString stringWithFormat: @"%@/setuid.do?user=%@",
+				base, altUser]];
+			NSURLRequest *suReq=[NSURLRequest requestWithURL:url
+				cachePolicy:NSURLRequestReloadIgnoringCacheData
+				timeoutInterval:60.0];
+			rv=[self tryRequest: suReq];
 		}
-		if(rc == 200){
-			rv=TRUE;
-		} else {
-			NSLog(@"Looks like we didn't authenticate (rc=%d).", rc);
-		}
-	
+		
 		[url release];
 	} else {
 		NSLog(@"Not authenticating to %@ - no username", base);

@@ -9,6 +9,7 @@
     IBOutlet id password;
     IBOutlet id url;
     IBOutlet id username;
+	IBOutlet id forUser;
 	
 	Location *_loc;
 }

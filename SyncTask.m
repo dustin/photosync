@@ -29,7 +29,8 @@
 	photoClient=[[PhotoClient alloc] initWithIndexPath:idxpath];
 	
 	BOOL authed=[photoClient authenticateTo:[location url]
-		user:[location username] passwd:[location password]];
+		user:[location username] passwd:[location password]
+		forUser:[location forUser]];
 	if(authed) {
 		NSLog(@"Authenticated");
 	} else {
