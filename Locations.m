@@ -2,7 +2,7 @@
 
 @implementation Locations
 
--(id)init;
+-(id)init
 {
 	self=[super init];
 	_locations=[[NSMutableArray alloc] init];
