@@ -45,7 +45,7 @@
 	if(resp != nil) {
 		rc=[resp statusCode];
 	}
-	if(rc == 200 || err == nil){
+	if(rc == 200 || (rc >= 300 && rc < 400)) {
 		rv=YES;
 	} else {
 		NSLog(@"%@ failed (rc=%d).", [theRequest URL], rc);
