@@ -16,6 +16,46 @@
 -(void)updateStatus:(NSString *)msg with:(int)done of:(int)total;
 @end
 
+// Sort descriptor for performing sort by keyword sets
+
+@interface KwSortDescriptor : NSSortDescriptor {
+	NSDictionary *kwMap;
+}
+-initWithKwMap:(NSDictionary *)km;
+@end
+
+@implementation KwSortDescriptor
+-initWithKwMap:(NSDictionary *)km
+{
+	id rv=[super init];
+	kwMap=km;
+	return rv;
+}
+
+- (NSComparisonResult)compareObject:(id)object1 toObject:(id)object2
+{
+	NSComparisonResult rv=NSOrderedSame;
+
+	int a=[[kwMap objectForKey: object1] count];
+	int b=[[kwMap objectForKey: object2] count];
+	if(a == b) {
+		NSString *s1=(NSString *)object1;
+		NSString *s2=(NSString *)object2;
+		rv=[s1 compare:s2];
+	} else {
+		// I want bigger numbers first.
+		if(a > b) {
+			rv=NSOrderedAscending;
+		} else {
+			rv=NSOrderedDescending;
+		}
+	}
+	return(rv);
+}
+@end
+
+// The SyncTask itself
+
 @implementation SyncTask
 
 -initWithLocation:(Location *)loc delegate:(id)del
@@ -272,6 +312,96 @@
 	[years release];
 }
 
+// Build the javascript search data
+-(void)writeSearchData
+{
+	// We're going to build three basic data structure here.
+	// We start by indexing the images -> keyword mappings
+	NSMutableDictionary *kws=[[NSMutableDictionary alloc] initWithCapacity:512];
+	NSEnumerator *e=[[photoClient photos] objectEnumerator];
+	id photo=nil;
+	while(photo = [e nextObject]) {
+		NSEnumerator *ke=[[photo keywordStrings] objectEnumerator];
+		id kw=nil;
+		while(kw = [ke nextObject]) {
+			NSMutableArray *imgs=[kws objectForKey:kw];
+			if(imgs == nil) {
+				imgs=[[NSMutableArray alloc] initWithCapacity:16];
+				[kws setObject:imgs forKey:kw];
+			}
+			[imgs addObject: photo];
+		}
+	}
+
+	// Sorted list of keywords by use
+	KwSortDescriptor *ksd=[[KwSortDescriptor alloc] initWithKwMap:kws];
+	NSArray *sortDescriptors=[[NSArray alloc] initWithObjects: ksd, nil];
+	NSMutableArray *sortedKeys=[[NSMutableArray alloc]
+		initWithCapacity:[kws count]];
+	[sortedKeys addObjectsFromArray:[kws allKeys]];
+	[sortedKeys sortUsingDescriptors: sortDescriptors];
+
+	// quoted strings
+	NSMutableArray *quoteKws=[[NSMutableArray alloc]
+		initWithCapacity:[sortedKeys count]];
+	e=[sortedKeys objectEnumerator];
+	id kw=nil;
+	while(kw = [e nextObject]) {
+		NSString *qkw=[[NSString alloc] initWithFormat:@"\"%@\"", kw];
+		[quoteKws addObject: qkw];
+		[qkw release];
+	}
+
+	NSMutableString *outString=[[NSMutableString alloc] initWithCapacity:8192];
+	[outString appendFormat:@"keywords=[%@];\n",
+		[quoteKws componentsJoinedByString:@", "]];
+
+	// keyword position from the sorted list to image mapping
+	[outString appendString:@"imgs = new Array();\n"];
+	e=[sortedKeys objectEnumerator];
+	kw=nil;
+	int i=0;
+	while(kw = [e nextObject]) {
+		NSMutableArray *photos=[kws objectForKey:kw];
+		[photos sortUsingSelector:@selector(compare:)];
+		NSMutableArray *ids=[[NSMutableArray alloc]
+			initWithCapacity:[photos count]];
+		NSEnumerator *pe=[photos objectEnumerator];
+		photo=nil;
+		while(photo = [pe nextObject]) {
+			NSString *idStr=[[NSString alloc]
+				initWithFormat:@"%d", [photo imgId]];
+			[ids addObject: idStr];
+			[idStr release];
+		}
+		[outString appendFormat:@"imgs[%d]=[%@];\n", i,
+			[ids componentsJoinedByString:@", "]];
+		[ids release];
+		i++;
+	}
+
+	// Photo location mapping
+	e=[[photoClient photos] objectEnumerator];
+	photo=nil;
+	[outString appendString:@"photloc = new Array();\n"];
+	while(photo = [e nextObject]) {
+		[outString appendFormat:@"photloc[%d]='%04d/%02d';\n",
+			[photo imgId], [photo year], [photo month]];
+	}
+
+	// Write it out
+	NSString *destFile=[[NSString alloc] initWithFormat:@"%@/searchdata.js",
+		[location destDir]];
+	[outString writeToFile:destFile atomically:YES];
+
+	[destFile release];
+	[quoteKws release];
+	[sortDescriptors release];
+	[ksd release];
+	[kws release];
+}
+
+// Build all pages
 -(void)setupPages
 {
 	NSLog(@"Setting up the main pages.");
@@ -315,6 +445,8 @@
 	[imgLists release];
 	[yearSet release];
 	[pagesDir release];
+
+	[self writeSearchData];
 }
 
 - (void)downloadDidFinish:(NSURLDownload *)download
