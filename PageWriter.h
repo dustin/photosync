@@ -18,4 +18,6 @@
 -(void)writePage:(NSString *)srcName dest:(NSString *)destPath
 	tokens:(NSDictionary *)t;
 
+-(void)copyMiscFiles:(NSString *)destPath;
+
 @end

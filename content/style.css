@@ -1,0 +1,26 @@
+
+body,td,th {
+    font-family: Arial, Helvetica, sans-serif;
+    background: white;
+    color: black;
+}
+
+#imgView {
+    text-align: center;
+}
+
+#imgView dl {
+    text-align: left;
+    width: 66%;
+}
+
+#footer {
+    border-top: solid 1px;
+    width: 50%;
+    font-size: smaller;
+}
+
+img {
+    border: none;
+}
+    

@@ -37,39 +37,6 @@
 	return name;
 }
 
--(void)checkPath
-{
-	NSFileManager *fm=[NSFileManager defaultManager];
-	NSString *yearDir=[[NSString alloc] initWithFormat:@"%@/pages/%d",
-		[location destDir], [photo year]];
-
-	BOOL isDir=NO;
-	if([fm fileExistsAtPath:yearDir isDirectory:&isDir] && isDir) {
-		// Already there
-	} else {
-		NSLog(@"Need to create %@", yearDir);
-		if(![fm createDirectoryAtPath:yearDir attributes:nil]) {
-			[NSException raise:@"CheckPath" format:@"Couldn't create dir %@",
-				yearDir];
-		}
-	}
-
-	NSString *monthDir=[[NSString alloc] initWithFormat:@"%@/pages/%d/%d",
-		[location destDir], [photo year], [photo month]];
-	if([fm fileExistsAtPath:monthDir isDirectory:&isDir] && isDir) {
-		// Already there
-	} else {
-		NSLog(@"Need to create %@", monthDir);
-		if(![fm createDirectoryAtPath:monthDir attributes:nil]) {
-			[NSException raise:@"CheckPath" format:@"Couldn't create dir %@",
-				monthDir];
-		}
-	}
-
-	[yearDir release];
-	[monthDir release];
-}
-
 -(void)fetch:(NSString *)u to:(NSString *)dest
 {
 	NSURL *url=[[NSURL alloc] initWithString:u];
@@ -151,16 +118,13 @@
 
 -(void)run
 {
-	// Start by figuring out what we need to do
-	[self checkPath];
-
 	// See if the images are there
 	NSFileManager *fm=[NSFileManager defaultManager];
 	NSString *normalFn=[[NSString alloc]
-		initWithFormat:@"%@/pages/%d/%d/%d_normal.jpg",
+		initWithFormat:@"%@/pages/%04d/%02d/%d_normal.jpg",
 			[location destDir], [photo year], [photo month], [photo imgId]];
 	NSString *tnFn=[[NSString alloc]
-		initWithFormat:@"%@/pages/%d/%d/%d_tn.jpg",
+		initWithFormat:@"%@/pages/%04d/%02d/%d_tn.jpg",
 			[location destDir], [photo year], [photo month], [photo imgId]];
 
 	if(![fm fileExistsAtPath:normalFn]) {
