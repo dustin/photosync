@@ -13,7 +13,7 @@
 
 -(id)init
 {
-	self=[super init];
+	id rv=[super init];
 	_active = TRUE;
 	_url=@"";
 	_username=@"";
@@ -21,18 +21,24 @@
 	_forUser=@"";
 	_destDir=@"";
 
-	return self;
+	return rv;
+}
+
+-(NSString *)description
+{
+	return([NSString stringWithFormat:@"<Location url=``%@'' rc=%u>",
+		_url, [self retainCount], nil]);
 }
 
 -(id)initWithDict:(NSDictionary *)d
 {
 	self=[super init];
 	_active = [[d objectForKey:@"active"] boolValue];
-	_url=[d objectForKey:@"url"];
-	_username=[d objectForKey:@"username"];
-	_password=[d objectForKey:@"password"];
-	_forUser=[d objectForKey:@"forUser"];
-	_destDir=[d objectForKey:@"destDir"];
+	_url=[[d objectForKey:@"url"] retain];
+	_username=[[d objectForKey:@"username"] retain];
+	_password=[[d objectForKey:@"password"] retain];
+	_forUser=[[d objectForKey:@"forUser"] retain];
+	_destDir=[[d objectForKey:@"destDir"] retain];
 	
 	return self;
 }
@@ -48,6 +54,31 @@
 		_destDir, @"destDir",
 		nil];
 	return(rv);
+}
+
+-(void)dealloc
+{
+	if(_url != nil) {
+		[_url release];
+		_url=nil;
+	}
+	if(_username != nil) {
+		[_username release];
+		_username=nil;
+	}
+	if(_password != nil) {
+		[_password release];
+		_password=nil;
+	}
+	if(_forUser != nil) {
+		[_forUser release];
+		_forUser=nil;
+	}
+	if(_destDir != nil) {
+		[_destDir release];
+		_destDir=nil;
+	}
+	[super dealloc];
 }
 
 -(BOOL)active

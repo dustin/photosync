@@ -10,6 +10,7 @@
 	Location *loc=[[Location alloc] init];
 	[self addLocation: loc];
 	[self showEditor: loc];
+	[loc release];
 }
 
 - (IBAction)performSync:(id)sender
@@ -21,8 +22,6 @@
     id object=nil;
     while(object = [e nextObject]) {
 	
-		NSLog(@"Got %@, url=%@, dest=%@", object, [object url], [object destDir]);
-		
 		[pc fetchIndexFrom: [object url]
 			to: [[object destDir]
 				stringByAppendingPathComponent: @"index.xml"]];

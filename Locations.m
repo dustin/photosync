@@ -9,6 +9,13 @@
 	return self;
 }
 
+-(void)dealloc
+{
+	NSLog(@"Deallocing Locations");
+	[_locations release];
+	[super dealloc];
+}
+
 -(int)numberOfRowsInTableView:(NSTableView *)aTableView
 {
 	return([_locations count]);
@@ -56,8 +63,9 @@
 	NSEnumerator *e=[arry objectEnumerator];
 	id object=nil;
 	while(object = [e nextObject]) {
-		[_locations addObject: [[Location alloc]
-			initWithDict:(NSDictionary *)object]];
+		Location *loc=[[Location alloc] initWithDict:(NSDictionary *)object];
+		[_locations addObject: loc];
+		[loc release];
 	}
 }
 
