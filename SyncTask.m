@@ -102,7 +102,7 @@
 {
 	// NSLog(@"Completed subtask:  %@", task);
 	// Figure out where where are
-	[self doNextTask:self];
+	[self performSelector:@selector(doNextTask:) withObject:self afterDelay:0];
 }
 
 -(void)cancel
