@@ -322,15 +322,24 @@
 		NSEnumerator *pe=[photos objectEnumerator];
 		photo=nil;
 		while(photo = [pe nextObject]) {
-			NSString *idStr=[[NSString alloc]
-				initWithFormat:@"%d", [photo imgId]];
-			[ids addObject: idStr];
-			[idStr release];
+			NSNumber *n=[[NSNumber alloc] initWithInt:[photo imgId]];
+			[ids addObject: n];
+			[n release];
 		}
 		[ids sortUsingSelector:@selector(compare:)];
+		// Now that they're sorted, we need to make a new copy that are string
+		// representations of those
+		NSMutableArray *idStrings=[[NSMutableArray alloc]
+			initWithCapacity:[ids count]];
+		pe=[ids objectEnumerator];
+		NSNumber *n=nil;
+		while(n = [pe nextObject]) {
+			[idStrings addObject: [n stringValue]];
+		}
 		[outString appendFormat:@"imgs[%d]=[%@];\n", i,
-			[ids componentsJoinedByString:@", "]];
+			[idStrings componentsJoinedByString:@", "]];
 		[ids release];
+		[idStrings release];
 		i++;
 	}
 
