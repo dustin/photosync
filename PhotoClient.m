@@ -138,8 +138,9 @@
 		[keywords release];
 		keywords = [[NSMutableDictionary alloc] initWithCapacity:5];
 	} else if([@"keywords" isEqualToString: elementName]) {
-		[current setObject: [[NSMutableSet alloc] initWithCapacity:5]
-			forKey:@"keywords"];
+		NSMutableSet *ms=[[NSMutableSet alloc] initWithCapacity:5];
+		[current setObject: ms forKey:@"keywords"];
+		[ms release];
 	} else if([@"keyword" isEqualToString: elementName]) {
 		NSString *kwid=[attributeDict objectForKey: @"id"];
 		NSNumber *n=[[NSNumber alloc] initWithInt: [kwid intValue]];

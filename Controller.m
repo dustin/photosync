@@ -144,11 +144,16 @@
 
 	[locTable setDoubleAction:@selector(doubleClicked:)];
 
+	// Set up notifications to update the view
 	[[NSNotificationCenter defaultCenter]
 		addObserver:self
 		selector:@selector(refreshList:)
 		name: PS_DID_UPDATE
 		object: nil];
+
+	// Don't allow in-memory cache
+	NSURLCache *cache=[NSURLCache sharedURLCache];
+	[cache setMemoryCapacity:0];
 }
 
 -(void)refreshList:(id)sender

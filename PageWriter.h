@@ -7,7 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "Location.h"
+#import "PhotoClient.h"
 
 @interface PageWriter : NSObject {
 
@@ -18,6 +19,6 @@
 -(void)writePage:(NSString *)srcName dest:(NSString *)destPath
 	tokens:(NSDictionary *)t;
 
--(void)copyMiscFiles:(NSString *)destPath;
+-(void)setupPages:(PhotoClient *)photoClient location:(Location *)location;
 
 @end
