@@ -84,6 +84,22 @@
 	}
 }
 
+-(BOOL)destExists:(Location *)location
+{
+	NSFileManager *fm=[NSFileManager defaultManager];
+	BOOL rv=NO;
+	BOOL isDir=NO;
+	NSString *destDir=[location destDir];
+	if([fm fileExistsAtPath:destDir isDirectory:&isDir] && isDir) {
+		rv=YES;
+	} else {
+		NSRunAlertPanel(@"Destination missing",
+			[NSString stringWithFormat:@"Destination is missing: %@", destDir],
+				@"OK", nil, nil);
+	}
+	return(isDir);
+}
+
 - (IBAction)performSync:(id)sender
 {
 	NSLog(@"Grabbing index");
@@ -94,7 +110,7 @@
 	NSEnumerator *e=[[locTable dataSource] objectEnumerator];
     id object=nil;
     while(object = [e nextObject]) {
-		if([object isActive]) {
+		if([object isActive] && [self destExists:object]) {
 			NSLog(@"Setting up %@ with %d",
 				[object url], [[object username] retainCount]);
 			SyncTask *st=[[SyncTask alloc] initWithLocation:object
