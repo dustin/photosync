@@ -14,6 +14,7 @@
 -initWithDict:(NSDictionary *)d keywordMap:(NSDictionary *)kw
 {
 	id rv=[super init];
+	NSAutoreleasePool *pool=[[NSAutoreleasePool alloc] init];
 
 	NSEnumerator *enumerator = [d keyEnumerator];
 	id key=nil;
@@ -40,6 +41,7 @@
 	month=[[parts objectAtIndex:1] intValue];
 	day=[[parts objectAtIndex:2] intValue];
 
+	[pool release];
 	return rv;
 }
 
