@@ -33,12 +33,18 @@
 	NSLog(@"Authenticating to %@ as %@", base, u);
 	BOOL rv=FALSE;
 	NSURL *url=[[NSURL alloc] initWithString:
-		[NSString stringWithFormat: @"%@/login.do?username=%@&password=%@",
-			base, u, p, nil]];
+		[base stringByAppendingString: @"/login.do"]];
 
-	NSURLRequest *theRequest=[NSURLRequest requestWithURL:url
+	// We should post the credentials so they don't show up in the logs
+	NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:url
 		cachePolicy:NSURLRequestReloadIgnoringCacheData
 		timeoutInterval:60.0];
+	[theRequest setHTTPMethod: @"POST"];
+	NSString *bodyString=[[NSString alloc]
+		initWithFormat:@"username=%@&password=%@", u, p, nil];
+	[theRequest setHTTPBody:
+		[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
+	[bodyString release];
 
 	NSURLResponse *resp=nil;
 	NSError *err=nil;
