@@ -7,14 +7,14 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				DAEA36B707B0D8D700C4E690,
+				DAEA36B907B0D8EA00C4E690,
+				DAEA36BA07B0D8EA00C4E690,
+				DAEA36BB07B0D8EA00C4E690,
+				DAEA36BC07B0D8EA00C4E690,
+				DAEA36B507B0D8CF00C4E690,
 				DA3659CE07B0A41900FBB3FF,
 				DA3659CF07B0A41900FBB3FF,
-				DA3659BF07B0A24D00FBB3FF,
-				DA3659C007B0A24D00FBB3FF,
-				DA3659C307B0A25400FBB3FF,
-				DA3659C407B0A25400FBB3FF,
-				DA3659C707B0A26400FBB3FF,
-				DA3659C807B0A26400FBB3FF,
 			);
 			isa = PBXGroup;
 			name = Classes;
@@ -282,10 +282,10 @@
 			files = (
 				8D11072B0486CEB800E47090,
 				DA3659BD07B0A1F800FBB3FF,
-				DA3659C107B0A24D00FBB3FF,
-				DA3659C607B0A25400FBB3FF,
-				DA3659C907B0A26400FBB3FF,
 				DA3659D007B0A41900FBB3FF,
+				DAEA36B607B0D8CF00C4E690,
+				DAEA36BD07B0D8EA00C4E690,
+				DAEA36BF07B0D8EA00C4E690,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,10 +300,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090,
-				DA3659C207B0A24D00FBB3FF,
-				DA3659C507B0A25400FBB3FF,
-				DA3659CA07B0A26400FBB3FF,
 				DA3659D107B0A41900FBB3FF,
+				DAEA36B807B0D8D700C4E690,
+				DAEA36BE07B0D8EA00C4E690,
+				DAEA36C007B0D8EA00C4E690,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,96 +369,6 @@
 			settings = {
 			};
 		};
-		DA3659BF07B0A24D00FBB3FF = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Controller.h;
-			path = /tmp/PhotoSync/Controller.h;
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		DA3659C007B0A24D00FBB3FF = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = Controller.m;
-			path = /tmp/PhotoSync/Controller.m;
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		DA3659C107B0A24D00FBB3FF = {
-			fileRef = DA3659BF07B0A24D00FBB3FF;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		DA3659C207B0A24D00FBB3FF = {
-			fileRef = DA3659C007B0A24D00FBB3FF;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		DA3659C307B0A25400FBB3FF = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = LocEditController.m;
-			path = /tmp/PhotoSync/LocEditController.m;
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		DA3659C407B0A25400FBB3FF = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = LocEditController.h;
-			path = /tmp/PhotoSync/LocEditController.h;
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		DA3659C507B0A25400FBB3FF = {
-			fileRef = DA3659C307B0A25400FBB3FF;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		DA3659C607B0A25400FBB3FF = {
-			fileRef = DA3659C407B0A25400FBB3FF;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		DA3659C707B0A26400FBB3FF = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = Locations.h;
-			path = /tmp/PhotoSync/Locations.h;
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		DA3659C807B0A26400FBB3FF = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			name = Locations.m;
-			path = /tmp/PhotoSync/Locations.m;
-			refType = 0;
-			sourceTree = "<absolute>";
-		};
-		DA3659C907B0A26400FBB3FF = {
-			fileRef = DA3659C707B0A26400FBB3FF;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		DA3659CA07B0A26400FBB3FF = {
-			fileRef = DA3659C807B0A26400FBB3FF;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		DA3659CE07B0A41900FBB3FF = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
@@ -483,6 +393,90 @@
 		};
 		DA3659D107B0A41900FBB3FF = {
 			fileRef = DA3659CF07B0A41900FBB3FF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAEA36B507B0D8CF00C4E690 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = Controller.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAEA36B607B0D8CF00C4E690 = {
+			fileRef = DAEA36B507B0D8CF00C4E690;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAEA36B707B0D8D700C4E690 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = Controller.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAEA36B807B0D8D700C4E690 = {
+			fileRef = DAEA36B707B0D8D700C4E690;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAEA36B907B0D8EA00C4E690 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = Locations.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAEA36BA07B0D8EA00C4E690 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = Locations.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAEA36BB07B0D8EA00C4E690 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = LocEditController.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAEA36BC07B0D8EA00C4E690 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = LocEditController.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAEA36BD07B0D8EA00C4E690 = {
+			fileRef = DAEA36B907B0D8EA00C4E690;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAEA36BE07B0D8EA00C4E690 = {
+			fileRef = DAEA36BA07B0D8EA00C4E690;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAEA36BF07B0D8EA00C4E690 = {
+			fileRef = DAEA36BB07B0D8EA00C4E690;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAEA36C007B0D8EA00C4E690 = {
+			fileRef = DAEA36BC07B0D8EA00C4E690;
 			isa = PBXBuildFile;
 			settings = {
 			};

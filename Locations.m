@@ -48,7 +48,6 @@
 	}
 	NSArray *rv=[NSArray arrayWithArray: (NSArray *)a];
 	[a release];
-	NSLog(@"Saving %@", rv);
 	return(rv);
 }
 
@@ -57,7 +56,8 @@
 	NSEnumerator *e=[arry objectEnumerator];
 	id object=nil;
 	while(object = [e nextObject]) {
-		[_locations addObject: [[Location alloc] initWithDict:(NSDictionary *)e]];
+		[_locations addObject: [[Location alloc]
+			initWithDict:(NSDictionary *)object]];
 	}
 }
 

@@ -39,15 +39,15 @@
 
 -(NSDictionary *)toDict
 {
-	NSMutableDictionary *rv=[[NSMutableDictionary alloc] init];
-	[rv setObject: [NSNumber numberWithBool: _active] forKey:@"active"];
-	[rv setObject: _url forKey:@"url"];
-	[rv setObject: _username forKey:@"username"];
-	[rv setObject: _password forKey:@"password"];
-	[rv setObject: _forUser forKey:@"forUser"];
-	[rv setObject: _destDir forKey:@"destDir"];
-	[rv release];
-	return((NSDictionary *)rv);
+	NSDictionary *rv=[NSDictionary dictionaryWithObjectsAndKeys:
+		[NSNumber numberWithBool: _active], @"active",
+		_url, @"url",
+		_username, @"username",
+		_password, @"password",
+		_forUser, @"forUser",
+		_destDir, @"destDir",
+		nil];
+	return(rv);
 }
 
 -(BOOL)active

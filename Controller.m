@@ -13,6 +13,7 @@
 
 - (IBAction)performSync:(id)sender
 {
+	NSLog(@"<Insert synchronization code here.>");
 }
 
 - (IBAction)rmLocation:(id)sender
@@ -26,7 +27,6 @@
 
 -(void)initDefaults
 {
-	NSLog(@"Initting defaults");
 	NSUserDefaults *def=[NSUserDefaults standardUserDefaults];
 	id ob=[def objectForKey:@"locations"];
 	if(ob != nil) {
@@ -76,7 +76,6 @@
 
 -(void)applicationWillTerminate:(id)notification
 {
-	NSLog(@"Application will terminate");
 	NSUserDefaults *def=[NSUserDefaults standardUserDefaults];
 	[def setObject: [[locTable dataSource] toArray] forKey:@"locations"];
 }
