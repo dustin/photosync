@@ -84,8 +84,14 @@
 		
 		[url release];
 	} else {
-		NSLog(@"Not authenticating to %@ - no username", base);
-		rv=TRUE;
+		NSLog(@"Not authenticating (but logging out) %@ - no username", base);
+		NSURL *url=[[NSURL alloc] initWithString:
+			[base stringByAppendingString: @"/logout.do"]];
+		NSURLRequest *req=[NSURLRequest requestWithURL:url
+			cachePolicy:NSURLRequestReloadIgnoringCacheData
+			timeoutInterval:60.0];
+		rv=[self tryRequest: req];
+		[url release];
 	}
 	return(rv);
 }
