@@ -68,6 +68,7 @@
     };
     PRINCIPAL_CLASS = NSApplication;
     PROJECT_AUTHORS = (
+	"Dustin Sallings"
     );
     PROJECT_COPYRIGHT = "Copyright (C) 2005";
     PROJECT_COPYRIGHT_DESC = "Released under a BSD license";

@@ -3,6 +3,9 @@
     ApplicationDescription = "A tool for building offline sites from PhotoServlet.";
     ApplicationName = PhotoSync;
     ApplicationRelease = 1.1;
+    Authors = (
+	"Dustin Sallings"
+    );
     Copyright = "Copyright (C) 2005";
     CopyrightDescription = "Released under a BSD license";
     FullVersionID = 1.1;
