@@ -50,6 +50,11 @@
 		[self setButtonAction:BUTTON_SYNC];
 		[statusText setHidden: YES];
 		[progressIndicator setHidden: YES];
+#ifdef GNUSTEP
+		// more gnustep workarounds
+		[statusText display];
+		[progressIndicator display];
+#endif
 	} else {
 		NSLog(@"Starting a task");
 		// Hide the progress indicator again so it isn't just stuck.
@@ -90,6 +95,11 @@
 	} else if(msg != nil) {
 		[statusText setStringValue:msg];
 	}
+#ifdef GNUSTEP
+	// this is also a gnustep workaround
+	[progressIndicator display];
+	[statusText display];
+#endif
 }
 
 -(BOOL)destExists:(Location *)location
