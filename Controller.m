@@ -174,6 +174,9 @@
 		name: PS_DID_UPDATE
 		object: nil];
 
+	[statusText setHidden:YES];
+	[progressIndicator setHidden:YES];
+
 	// Don't allow in-memory cache
 #ifndef GNUSTEP
 	NSURLCache *cache=[NSURLCache sharedURLCache];
