@@ -11,6 +11,16 @@
 
 @implementation PhotoClient
 
+-(void)dealloc
+{
+	NSLog(@"Deallocing %@", self);
+	[el release];
+	[current release];
+	[keywords release];
+	[photos release];
+	[super dealloc];
+}
+
 -(BOOL)authenticateTo:(NSString *)base user:(NSString *)u passwd:(NSString *)p
 {
 	NSLog(@"Authenticating to %@ as %@", base, u);
