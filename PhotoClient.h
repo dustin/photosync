@@ -7,13 +7,26 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "Photo.h"
 
 @interface PhotoClient : NSObject {
+
+	BOOL lastWasSpace;
+	NSString *el;
+	NSMutableDictionary *current;
+	NSMutableDictionary *keywords;
+
+	NSMutableSet *photos;
 
 }
 
 -(void)authenticateTo:(NSString *)base user:(NSString *)u passwd:(NSString *)p;
 -(void)fetchIndexFrom:(NSString *)base to:(NSString *)path;
+
+// Parse the index
+-(void)parseIndex:(NSString *)path;
+
+-(NSDictionary *)keywords;
+-(NSSet *)photos;
 
 @end

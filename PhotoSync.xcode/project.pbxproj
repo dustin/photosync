@@ -7,6 +7,8 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				DAF15AF107B1CC790031C5C1,
+				DAF15AF207B1CC790031C5C1,
 				DA1051F307B16436007CD7D2,
 				DA1051F407B16436007CD7D2,
 				DA1051E907B152A2007CD7D2,
@@ -292,6 +294,7 @@
 				DAEA36BF07B0D8EA00C4E690,
 				DA1051EB07B152A2007CD7D2,
 				DA1051F507B16436007CD7D2,
+				DAF15AF307B1CC790031C5C1,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +315,7 @@
 				DAEA36C007B0D8EA00C4E690,
 				DA1051EC07B152A2007CD7D2,
 				DA1051F607B16436007CD7D2,
+				DAF15AF407B1CC790031C5C1,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,6 +545,34 @@
 		};
 		DAEA36C007B0D8EA00C4E690 = {
 			fileRef = DAEA36BC07B0D8EA00C4E690;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAF15AF107B1CC790031C5C1 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = Photo.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAF15AF207B1CC790031C5C1 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = Photo.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAF15AF307B1CC790031C5C1 = {
+			fileRef = DAF15AF107B1CC790031C5C1;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAF15AF407B1CC790031C5C1 = {
+			fileRef = DAF15AF207B1CC790031C5C1;
 			isa = PBXBuildFile;
 			settings = {
 			};

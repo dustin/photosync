@@ -16,18 +16,19 @@
 - (IBAction)performSync:(id)sender
 {
 	NSLog(@"Grabbing index");
-	PhotoClient *pc=[[PhotoClient alloc] init];
 	
 	NSEnumerator *e=[[locTable dataSource] objectEnumerator];
     id object=nil;
     while(object = [e nextObject]) {
+		PhotoClient *pc=[[PhotoClient alloc] init];
+		NSString *idxpath=[[object destDir]
+			stringByAppendingPathComponent: @"index.xml"];
 	
-		[pc fetchIndexFrom: [object url]
-			to: [[object destDir]
-				stringByAppendingPathComponent: @"index.xml"]];
+		[pc fetchIndexFrom: [object url] to: idxpath];
+		[pc parseIndex: idxpath];
+		NSLog(@"Parsed %d photos", [[pc photos] count]);
+		[pc release];
     }
-	
-	[pc release];
 }
 
 
