@@ -21,13 +21,26 @@
 	return([_locations count]);
 }
 
-- (id)tableView:(NSTableView *)aTableView
+-tableView:(NSTableView *)aTableView
     objectValueForTableColumn:(NSTableColumn *)aTableColumn
     row:(int)rowIndex
 {
 	id theItem=[_locations objectAtIndex: rowIndex];
 	id rv=[theItem valueForKey:[aTableColumn identifier]];
 	return(rv);
+}
+
+-(void)tableView:(NSTableView *)aTableView
+    setObjectValue:anObject
+    forTableColumn:(NSTableColumn *)aTableColumn
+    row:(int)rowIndex
+{
+	id theItem=[_locations objectAtIndex: rowIndex];
+	if([@"active" isEqual: [aTableColumn identifier]]) {
+		[theItem setActive: [anObject boolValue]];
+	} else {
+		NSLog(@"Not editing column %@", [aTableColumn identifier]);
+	}
 }
 
 -(void)addItem: (Location *)loc
