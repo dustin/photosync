@@ -105,6 +105,7 @@
 
 - (void)downloadDidFinish:(NSURLDownload *)download
 {
+	NSAutoreleasePool *pool=[[NSAutoreleasePool alloc] init];
     NSLog(@"Finished downloading index from %@, beginning parse",
 		[location url]);
 	[self updateStatus: @"Parsing index"];
@@ -117,12 +118,27 @@
 		NSString *n=[[NSString alloc]
 			initWithFormat:@"Photo %d", [object imgId]];
 		SyncSubTask *sst=[[SyncSubTask alloc]
-			initWithName:n photo:object delegate:self];
+			initWithName:n location:location photo:object delegate:self];
 		[n release];
 		[subTasks addObject:sst];
 		[sst release];
 	}
 	NSLog(@"Created tasks");
+	BOOL isDir=YES;
+	NSString *pagesDir=[[NSString alloc] initWithFormat:@"%@/pages",
+		[location destDir]];
+	NSFileManager *fm=[NSFileManager defaultManager];
+	if([fm fileExistsAtPath:pagesDir isDirectory:&isDir] && isDir) {
+		NSLog(@"%@ exists", pagesDir);
+	} else {
+		NSLog(@"Creating pages dir");
+		if(![fm createDirectoryAtPath:pagesDir attributes:nil]) {
+			[NSException raise:@"CheckPath" format:@"Couldn't create dir %@",
+				pagesDir];
+		}
+	}
+	[pagesDir release];
+	[pool release];
 	[self doNextTask:self];
 }
 

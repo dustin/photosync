@@ -8,15 +8,20 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Photo.h"
+#import "Location.h"
 
 @interface SyncSubTask : NSObject {
 
 	NSString *name;
 	Photo *photo;
+	Location *location;
 	id delegate;
+
+	int imgsToFetch;
 }
 
--initWithName:(NSString *)n photo:(NSString *)p delegate:(id)del;
+-initWithName:(NSString *)n location:(Location *)l
+	photo:(NSString *)p delegate:(id)del;
 
 -(NSString *)name;
 

@@ -84,6 +84,7 @@
 
 -(void)parseIndex
 {
+	NSAutoreleasePool *pool=[[NSAutoreleasePool alloc] init];
 	NSURL *u=[[NSURL alloc] initFileURLWithPath:indexPath];
 	NSXMLParser *xmlp=[[NSXMLParser alloc] initWithContentsOfURL: u];
 
@@ -98,6 +99,7 @@
 	[u release];
 
 	NSLog(@"Parsed %d photos", [photos count]);
+	[pool release];
 }
 
 -(NSDictionary *)keywords
