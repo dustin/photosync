@@ -15,12 +15,39 @@
 	[loc release];
 }
 
+-(void)stopSync:(id)sender
+{
+	NSLog(@"Stopping.");
+	NSEnumerator *e=[stuffToDo objectEnumerator];
+    id object=nil;
+    while(object = [e nextObject]) {
+		[object cancel];
+	}
+	[stuffToDo removeAllObjects];
+	[[NSNotificationCenter defaultCenter]
+		postNotificationName: PS_STOP object: self];
+}
+
+-(void)setButtonAction:(int)to
+{
+	switch(to) {
+		case BUTTON_SYNC:
+			[syncButton setTitle:@"Sync"];
+			[syncButton setAction:@selector(performSync:)];
+			break;
+		case BUTTON_STOP:
+			[syncButton setTitle:@"Stop"];
+			[syncButton setAction:@selector(stopSync:)];
+			break;
+	}
+}
+
 -(void)doNextTask:(id)sender
 {
 	NSLog(@"doNextTask: called.");
 	if([stuffToDo count] == 0) {
 		NSLog(@"All tasks complete.");
-		[syncButton setEnabled: YES];
+		[self setButtonAction:BUTTON_SYNC];
 		[statusText setHidden: YES];
 		[progressIndicator setHidden: YES];
 	} else {
@@ -60,7 +87,7 @@
 - (IBAction)performSync:(id)sender
 {
 	NSLog(@"Grabbing index");
-	[syncButton setEnabled: FALSE];
+	[self setButtonAction:BUTTON_STOP];
 	
 	// Clear out the work list
 	[stuffToDo removeAllObjects];

@@ -2,6 +2,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define BUTTON_SYNC 1
+#define BUTTON_STOP 2
+
 @interface Controller : NSWindowController
 {
     IBOutlet id locEdit;

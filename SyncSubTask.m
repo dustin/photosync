@@ -6,6 +6,7 @@
 //  Copyright 2005 Dustin Sallings. All rights reserved.
 //
 
+#import "PhotoSync.h"
 #import "SyncSubTask.h"
 #import "SyncTask.h"
 #import "Location.h"
@@ -24,6 +25,7 @@
 	name=[n retain];
 	photo=[p retain];
 	delegate=[del retain];
+	imgsToFetch=[[NSMutableArray alloc] init];
 	// Like synctask, I'll retain myself
 	[self retain];
 	return rv;
@@ -77,6 +79,7 @@
 		initWithRequest:theRequest delegate: self];
 	if(dl != nil) {
 		[dl setDestination:dest allowOverwrite:YES];
+		[imgsToFetch addObject: dl];
 	} else {
 		[NSException raise:@"FetchImage" format:@"Couldn't fetch image from %@",
 			u];
@@ -108,15 +111,16 @@
 	if([delegate respondsToSelector:@selector(completedTask:)]) {
 		[delegate completedTask:self];
 	}
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[self release];
 }
 
 - (void)downloadDidFinish:(NSURLDownload *)download
 {
 	// NSLog(@"%@ completed successfully", [[download request] URL]);
+	[imgsToFetch removeObject: download];
 	[download release];
-	imgsToFetch--;
-	if(imgsToFetch == 0) {
+	if([imgsToFetch count] == 0) {
 		[self complete];
 	}
 }
@@ -124,17 +128,28 @@
 - (void)download:(NSURLDownload *)download didFailWithError:(NSError *)error
 {
 	NSLog(@"%@ failed", [[download request] URL]);
+	[imgsToFetch removeObject: download];
 	[download release];
-	imgsToFetch--;
-	if(imgsToFetch == 0) {
+	if([imgsToFetch count] == 0) {
 		[self complete];
 	}
 }
 
+-(void)stopDownloads:(id)sender
+{
+	NSLog(@"Subtask needs to stop downloads");
+	NSEnumerator *e=[imgsToFetch objectEnumerator];
+	id dl=nil;
+	while(dl = [e nextObject]) {
+		NSLog(@"Cancelling download of %@", [[dl request] URL]);
+		[dl cancel];
+	}
+	[imgsToFetch removeAllObjects];
+	[self complete];
+}
+
 -(void)run
 {
-	imgsToFetch=0;
-
 	// Start by figuring out what we need to do
 	[self checkPath];
 
@@ -148,11 +163,9 @@
 			[location destDir], [photo year], [photo month], [photo imgId]];
 
 	if(![fm fileExistsAtPath:normalFn]) {
-		imgsToFetch++;
 		[self fetchNormal:normalFn];
 	}
 	if(![fm fileExistsAtPath:tnFn]) {
-		imgsToFetch++;
 		[self fetchTn:tnFn];
 	}
 
@@ -160,13 +173,26 @@
 	[tnFn release];
 
 	// If we don't have anything to do go ahead and shut down.
-	if(imgsToFetch == 0) {
+	if([imgsToFetch count] == 0) {
 		[self complete];
+	} else {
+		[[NSNotificationCenter defaultCenter]
+			addObserver:self
+			selector:@selector(stopDownloads:)
+			name: PS_STOP
+			object: nil];
 	}
+
+}
+
+-(void)cancel
+{
+	[self release];
 }
 
 -(void)dealloc
 {
+	[imgsToFetch release];
 	[location release];
 	[name release];
 	[photo release];

@@ -7,4 +7,5 @@
  *
  */
 
-#define PS_DID_UPDATE @"PS_DidUpdate"
+#define PS_DID_UPDATE @"PhotoSync_DidUpdate"
+#define PS_STOP @"PhotoSync_Stop"

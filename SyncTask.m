@@ -36,10 +36,23 @@
 		[rv release];
 		rv=nil;
 	}
+
 	// OK, this is a bit weird, but it happens outside of the
 	// run loop, so it's going to retain and release itself
 	[rv retain];
 	return rv;
+}
+
+-(void)stopSubTasks:(id)sender
+{
+	NSLog(@"Subtask stopping.");
+	// First cancel the objects so we can release
+	NSEnumerator *e=[subTasks objectEnumerator];
+	id object=nil;
+	while(object = [e nextObject]) {
+		[object cancel];
+	}
+	[subTasks removeAllObjects];
 }
 
 -(NSString *)description
@@ -69,6 +82,7 @@
 		if([delegate respondsToSelector:@selector(completedTask:)]) {
 			[delegate completedTask:self];
 		}
+		[[NSNotificationCenter defaultCenter] removeObserver:self];
 		[self release];
 	} else {
 		// NSLog(@"Starting a subtask");
@@ -95,9 +109,22 @@
 	[self doNextTask:self];
 }
 
+-(void)cancel
+{
+	[self release];
+}
+
 -(void)run
 {
 	NSLog(@"Running %@", self);
+
+	// Register myself for stopping
+	[[NSNotificationCenter defaultCenter]
+		addObserver:self
+		selector:@selector(stopSubTasks:)
+		name: PS_STOP
+		object: nil];
+
 	[self updateStatus: [@"Fetching index from "
 		stringByAppendingString: [location url]]];
 	[photoClient fetchIndexFrom: [location url] downloadDelegate:self];
@@ -123,7 +150,7 @@
 		[subTasks addObject:sst];
 		[sst release];
 	}
-	NSLog(@"Created tasks");
+	NSLog(@"Created %d tasks", [subTasks count]);
 	BOOL isDir=YES;
 	NSString *pagesDir=[[NSString alloc] initWithFormat:@"%@/pages",
 		[location destDir]];
@@ -144,6 +171,7 @@
 
 -(void)dealloc
 {
+	// NSLog(@"Deallocing %@", self);
 	[subTasks release];
 	[location release];
 	[photoClient release];

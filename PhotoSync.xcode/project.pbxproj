@@ -269,7 +269,7 @@
 			buildRules = (
 			);
 			buildSettings = {
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PhotoSync_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;

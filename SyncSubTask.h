@@ -17,7 +17,7 @@
 	Location *location;
 	id delegate;
 
-	int imgsToFetch;
+	NSMutableArray *imgsToFetch;
 }
 
 -initWithName:(NSString *)n location:(Location *)l
@@ -26,5 +26,6 @@
 -(NSString *)name;
 
 -(void)run;
+-(void)cancel;
 
 @end

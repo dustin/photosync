@@ -21,5 +21,7 @@
 -initWithLocation:(Location *)loc delegate:(id)del;
 
 -(void)run;
+-(void)cancel;
+-(void)stopSubTasks:(id)sender;
 
 @end
