@@ -18,6 +18,7 @@
 - (IBAction)newLocation:(id)sender;
 - (IBAction)performSync:(id)sender;
 - (IBAction)rmLocation:(id)sender;
+- (IBAction)editHighlighted:(id)sender;
 
 -(void)addLocation:(id)loc;
 -(void)showEditor:(id)loc;

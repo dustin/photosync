@@ -165,7 +165,7 @@
 
 	stuffToDo=[[NSMutableArray alloc] init];
 
-	[locTable setDoubleAction:@selector(doubleClicked:)];
+	[locTable setDoubleAction:@selector(editHighlighted:)];
 
 	// Set up notifications to update the view
 	[[NSNotificationCenter defaultCenter]
@@ -192,7 +192,7 @@
 	[locEdit setLocation:loc];
 }
 
--(void)doubleClicked:(id)sender
+-(void)editHighlighted:(id)sender
 {
 	int row=[locTable selectedRow];
 	if(row >= 0) {

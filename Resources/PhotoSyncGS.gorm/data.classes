@@ -5,6 +5,7 @@
 	    "newLocation:",
 	    "performSync:",
 	    "rmLocation:",
+	    "editHighlighted:",
 	    "addLocation:",
 	    "showEditor:"
 	);
@@ -21,6 +22,7 @@
 	Actions = (
 	    "addLocation:",
 	    "browse:",
+	    "editHighlighted:",
 	    "loadArray:",
 	    "newLocation:",
 	    "performSync:",
