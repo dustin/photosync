@@ -114,16 +114,24 @@
 {
 	NSLog(@"Running %@", self);
 
-	// Register myself for stopping
-	[[NSNotificationCenter defaultCenter]
-		addObserver:self
-		selector:@selector(stopSubTasks:)
-		name: PS_STOP
-		object: nil];
+	BOOL authed=[photoClient authenticateTo:[location url]
+		user:[location username] passwd:[location password]
+		forUser:[location forUser]];
+	if(authed) {
+		NSLog(@"Authenticated");
+		// Register myself for stopping
+		[[NSNotificationCenter defaultCenter]
+			addObserver:self
+			selector:@selector(stopSubTasks:)
+			name: PS_STOP
+			object: nil];
 
-	[self updateStatus: [@"Fetching index from "
-		stringByAppendingString: [location url]] with:0 of:0];
-	[photoClient fetchIndexFrom: [location url] downloadDelegate:self];
+		[self updateStatus: [@"Fetching index from "
+			stringByAppendingString: [location url]] with:0 of:0];
+		[photoClient fetchIndexFrom: [location url] downloadDelegate:self];
+	} else {
+		NSLog(@"Authentication failed");
+	}
 }
 
 - (void)download:(NSURLDownload *)download
