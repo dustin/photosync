@@ -176,9 +176,9 @@
 	NSFileManager *fm=[NSFileManager defaultManager];
 	BOOL isDir=NO;
 	if([fm fileExistsAtPath:path isDirectory:&isDir] && isDir) {
-		NSLog(@"%@ exists", path);
+		// NSLog(@"%@ exists", path);
 	} else {
-		NSLog(@"Creating pages dir");
+		NSLog(@"Creating %@ dir", path);
 		if(![fm createDirectoryAtPath:path attributes:nil]) {
 			[NSException raise:@"CheckPath" format:@"Couldn't create dir %@",
 				path];
@@ -447,6 +447,19 @@
 	[pagesDir release];
 
 	[self writeSearchData];
+}
+
+- (void)download:(NSURLDownload *)download
+	didReceiveResponse:(NSURLResponse *)response
+{
+	NSLog(@"Received response from %@, expected length is %d",
+		[location url], [response expectedContentLength]);
+}
+
+- (void)download:(NSURLDownload *)download
+	didReceiveDataOfLength:(unsigned)l
+{
+	NSLog(@"Received %u bytes of data from %@", l, [location url]);
 }
 
 - (void)downloadDidFinish:(NSURLDownload *)download

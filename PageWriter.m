@@ -23,7 +23,7 @@
 -(void)writePage:(NSString *)srcName dest:(NSString *)destPath
 	tokens:(NSDictionary *)t
 {
-	NSLog(@"Building a %@ for %@", srcName, destPath);
+	// NSLog(@"Building a %@ for %@", srcName, destPath);
 	
 	NSAutoreleasePool *pool=[[NSAutoreleasePool alloc] init];
 	NSBundle *mainBundle = [NSBundle mainBundle];
@@ -56,7 +56,7 @@
 -(void)copyFile:(NSString *)srcPath to:(NSString *)destPath
 {
 	NSFileManager *fm=[NSFileManager defaultManager];
-	NSLog(@"Copying %@ to %@", srcPath, destPath);
+	// NSLog(@"Copying %@ to %@", srcPath, destPath);
 	[fm copyPath:srcPath toPath:destPath handler:nil];
 }
 
