@@ -228,7 +228,7 @@
 		[indexIdx appendFormat:INDEX_INDEX_FMT,
 			year, year, yearCount, (yearCount == 1 ? @"image":@"images")];
 
-		NSLog(@"Doing the months for %@", year);
+		// NSLog(@"Doing the months for %@", year);
 		// Do the months
 		int i=0;
 		for(i=1; i<=12; i++) {
@@ -360,7 +360,7 @@
 // Build all pages
 -(void)setupPages:(PhotoClient *)photoClient location:(Location *)location
 {
-	NSLog(@"Setting up the main pages.");
+	NSLog(@"Setting up the main pages in %@", [location destDir]);
 	NSString *pagesDir=[[NSString alloc] initWithFormat:@"%@/pages",
 		[location destDir]];
 	[self ensureDir:pagesDir];

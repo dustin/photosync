@@ -43,8 +43,8 @@
 
 -(NSString *)description
 {
-	return([NSString stringWithFormat:@"<Location url=``%@'' rc=%u>",
-		_url, [self retainCount], nil]);
+	return([NSString stringWithFormat:@"<Location url=``%@'' dest=``%@''>",
+		_url, _destDir]);
 }
 
 -initWithDict:(NSDictionary *)d

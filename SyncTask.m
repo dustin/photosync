@@ -137,14 +137,16 @@
 - (void)download:(NSURLDownload *)download
 	didReceiveResponse:(NSURLResponse *)response
 {
+	/*
 	NSLog(@"Received response from %@, expected length is %d",
 		[location url], [response expectedContentLength]);
+	*/
 }
 
 - (void)download:(NSURLDownload *)download
 	didReceiveDataOfLength:(unsigned)l
 {
-	NSLog(@"Received %u bytes of data from %@", l, [location url]);
+	// NSLog(@"Received %u bytes of data from %@", l, [location url]);
 }
 
 - (void)downloadDidFinish:(NSURLDownload *)download

@@ -119,8 +119,7 @@
     id object=nil;
     while(object = [e nextObject]) {
 		if([object isActive] && [self destExists:object]) {
-			NSLog(@"Setting up %@ with %d",
-				[object url], [[object username] retainCount]);
+			NSLog(@"Setting up task for %@", object);
 			SyncTask *st=[[SyncTask alloc] initWithLocation:object
 				delegate:self];
 			if(st == nil) {
