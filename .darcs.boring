@@ -11,8 +11,11 @@
 ~$
 #(^|/)\.[^/]
 (^|/)_darcs($|/)
+(^|/)build($|/)
 (^|/)PhotoSync.app($|/)
 (^|/)shared_obj($|/)
+\.mode1$
+\.pbxuser$
 \.bak$
 \.backup$
 \.BAK$
