@@ -141,7 +141,7 @@
 {
 	if([@"photo" isEqualToString: elementName]) {
 		Photo *photo=[[Photo alloc] initWithDict:current keywordMap:keywords];
-		NSLog(@"Finished %@", photo);
+		// NSLog(@"Finished %@", photo);
 		[photos addObject:photo];
 		[current release];
 		current=nil;
