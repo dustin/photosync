@@ -135,7 +135,7 @@
 	}
 
 	NSString *pageLoc=[[NSString alloc]
-		initWithFormat:@"%@/pages/%d/%d/%d.html",
+		initWithFormat:@"%@/pages/%04d/%02d/%d.html",
 			[location destDir], [photo year], [photo month], [photo imgId]];
 
 	PageWriter *pw=[PageWriter sharedInstance];
