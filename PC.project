@@ -39,7 +39,7 @@
 	PhotoSyncGS.gorm
     );
     LANGUAGE = English;
-    LAST_EDITING = "2005-02-12 05:14:55 +0000";
+    LAST_EDITING = "2005-02-13 10:12:54 +0000";
     LIBRARIES = (
 	"gnustep-base",
 	"gnustep-gui",
@@ -79,7 +79,7 @@
     );
     PROJECT_GROUP = "No group avaliable!";
     PROJECT_MAINTAINER = "User &";
-    PROJECT_NAME = PhotoSyncGS;
+    PROJECT_NAME = PhotoSync;
     PROJECT_RELEASE = 0.1;
     PROJECT_SUMMARY = "No summary avaliable!";
     PROJECT_TYPE = Application;

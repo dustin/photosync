@@ -8,16 +8,16 @@ include $(GNUSTEP_MAKEFILES)/common.make
 # Application
 #
 VERSION = 0.1
-PACKAGE_NAME = PhotoSyncGS
-APP_NAME = PhotoSyncGS
-PhotoSyncGS_APPLICATION_ICON = 
+PACKAGE_NAME = PhotoSync
+APP_NAME = PhotoSync
+PhotoSync_APPLICATION_ICON = 
 GNUSTEP_INSTALLATION_DIR = $(HOME)/GNUstep
 
 
 #
 # Resource files
 #
-PhotoSyncGS_RESOURCE_FILES = \
+PhotoSync_RESOURCE_FILES = \
 Resources/PhotoSyncGS.gorm\
 Resources/Info-gnustep.plist \
 Resources/index.html \
@@ -31,7 +31,7 @@ Resources/year.html
 #
 # Header files
 #
-PhotoSyncGS_HEADER_FILES = \
+PhotoSync_HEADER_FILES = \
 AppController.h \
 Controller.h \
 Location.h \
@@ -46,7 +46,7 @@ SyncTask.h
 #
 # Class files
 #
-PhotoSyncGS_OBJC_FILES = \
+PhotoSync_OBJC_FILES = \
 AppController.m \
 Controller.m \
 Location.m \
@@ -61,9 +61,9 @@ SyncTask.m
 #
 # C files
 #
-PhotoSyncGS_C_FILES = 
+PhotoSync_C_FILES = 
 
-PhotoSyncGS_OBJC_FILES += \
+PhotoSync_OBJC_FILES += \
 main.m 
 
 #
