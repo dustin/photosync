@@ -86,8 +86,10 @@
 	[ts release];
 	[descr release];
 	[extension release];
+	[cat release];
 
 	[keywords release];
+	[keywordStrings release];
 	[super dealloc];
 }
 
