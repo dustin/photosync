@@ -67,7 +67,7 @@
 
 -(void)setUrl:(NSString *)to
 {
-	if(_url == nil) {
+	if(_url != nil) {
 		[_url release];
 	}
 	[to retain];
@@ -81,7 +81,7 @@
 
 -(void)setUsername:(NSString *)to
 {
-	if(_username == nil) {
+	if(_username != nil) {
 		[_username release];
 	}
 	[to retain];
@@ -95,7 +95,7 @@
 
 -(void)setPassword:(NSString *)to
 {
-	if(_password == nil) {
+	if(_password != nil) {
 		[_password release];
 	}
 	[to retain];
@@ -109,7 +109,7 @@
 
 -(void)setForUser:(NSString *)to
 {
-	if(_forUser == nil) {
+	if(_forUser != nil) {
 		[_forUser release];
 	}
 	[to retain];
@@ -123,7 +123,7 @@
 
 -(void)setDestDir:(NSString *)to
 {
-	if(_destDir == nil) {
+	if(_destDir != nil) {
 		[_destDir release];
 	}
 	[to retain];
