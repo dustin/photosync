@@ -18,6 +18,7 @@
 
 	NSMutableSet *photos;
 
+	int section;
 }
 
 -initWithIndexPath:(NSString *)path;

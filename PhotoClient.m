@@ -116,35 +116,40 @@
 // This class also acts as a delegate for parsing the XML
 //
 
+#define PS_SEC_NONE 0
+#define PS_SEC_KEYWORDS 1
+#define PS_SEC_ALBUM 2
+
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName
   attributes:(NSDictionary *)attributeDict
 {
-	if([@"photo" isEqualToString: elementName]) {
+	if([@"photoexport" isEqualToString: elementName]) {
+		section=PS_SEC_NONE;
+	} else if([@"photo" isEqualToString: elementName]) {
 		[current release];
 		current = [[NSMutableDictionary alloc] initWithCapacity:5];
 	} else if([@"album" isEqualToString: elementName]) {
+		section=PS_SEC_ALBUM;
 		[photos release];
 		photos = [[NSMutableSet alloc] initWithCapacity:5];
 	} else if([@"keywordmap" isEqualToString: elementName]) {
+		section=PS_SEC_KEYWORDS;
 		[keywords release];
 		keywords = [[NSMutableDictionary alloc] initWithCapacity:5];
 	} else if([@"keywords" isEqualToString: elementName]) {
 		[current setObject: [[NSMutableSet alloc] initWithCapacity:5]
 			forKey:@"keywords"];
 	} else if([@"keyword" isEqualToString: elementName]) {
-		if([attributeDict objectForKey: @"id"] != nil) {
-			NSString *kwid=[attributeDict objectForKey: @"id"];
-			NSNumber *n=[[NSNumber alloc] initWithInt: [kwid intValue]];
+		NSString *kwid=[attributeDict objectForKey: @"id"];
+		NSNumber *n=[[NSNumber alloc] initWithInt: [kwid intValue]];
+		if(section == PS_SEC_KEYWORDS) {
 			[keywords setObject: [attributeDict objectForKey: @"word"]
 				forKey: n];
-			[n release];
 		} else {
-			NSString *kwid=[attributeDict objectForKey: @"kwid"];
-			NSNumber *n=[[NSNumber alloc] initWithInt: [kwid intValue]];
 			[[current objectForKey: @"keywords"] addObject: n];
-			[n release];
 		}
+		[n release];
 	} else {
 		[el release];
 		el = [elementName retain];
