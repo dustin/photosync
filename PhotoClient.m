@@ -30,37 +30,42 @@
 
 -(BOOL)authenticateTo:(NSString *)base user:(NSString *)u passwd:(NSString *)p
 {
-	NSLog(@"Authenticating to %@ as %@", base, u);
 	BOOL rv=FALSE;
-	NSURL *url=[[NSURL alloc] initWithString:
-		[base stringByAppendingString: @"/login.do"]];
-
-	// We should post the credentials so they don't show up in the logs
-	NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:url
-		cachePolicy:NSURLRequestReloadIgnoringCacheData
-		timeoutInterval:60.0];
-	[theRequest setHTTPMethod: @"POST"];
-	NSString *bodyString=[[NSString alloc]
-		initWithFormat:@"username=%@&password=%@", u, p];
-	[theRequest setHTTPBody:
-		[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
-	[bodyString release];
-
-	NSHTTPURLResponse *resp=nil;
-	NSError *err=nil;
-	[NSURLConnection sendSynchronousRequest:theRequest
-		returningResponse:&resp error:&err];
-	int rc=500;
-	if(resp != nil) {
-		rc=[resp statusCode];
-	}
-	if(rc == 200){
-		rv=TRUE;
+	if(u != nil && [u length] > 0) {
+		NSLog(@"Authenticating to %@ as %@", base, u);
+		NSURL *url=[[NSURL alloc] initWithString:
+			[base stringByAppendingString: @"/login.do"]];
+	
+		// We should post the credentials so they don't show up in the logs
+		NSMutableURLRequest *theRequest=[NSMutableURLRequest requestWithURL:url
+			cachePolicy:NSURLRequestReloadIgnoringCacheData
+			timeoutInterval:60.0];
+		[theRequest setHTTPMethod: @"POST"];
+		NSString *bodyString=[[NSString alloc]
+			initWithFormat:@"username=%@&password=%@", u, p];
+		[theRequest setHTTPBody:
+			[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
+		[bodyString release];
+	
+		NSHTTPURLResponse *resp=nil;
+		NSError *err=nil;
+		[NSURLConnection sendSynchronousRequest:theRequest
+			returningResponse:&resp error:&err];
+		int rc=500;
+		if(resp != nil) {
+			rc=[resp statusCode];
+		}
+		if(rc == 200){
+			rv=TRUE;
+		} else {
+			NSLog(@"Looks like we didn't authenticate (rc=%d).", rc);
+		}
+	
+		[url release];
 	} else {
-		NSLog(@"Looks like we didn't authenticate (rc=%d).", rc);
+		NSLog(@"Not authenticating to %@ - no username", base);
+		rv=TRUE;
 	}
-
-	[url release];
 	return(rv);
 }
 
