@@ -1,4 +1,5 @@
 #import "LocEditController.h"
+#import "PhotoSync.h"
 
 @implementation LocEditController
 
@@ -33,7 +34,7 @@
 	[[self window] performClose: sender];
 	// Send a notification
 	[[NSNotificationCenter defaultCenter]
-		postNotificationName: @"DidUpdate" object: self];
+		postNotificationName: PS_DID_UPDATE object: self];
 }
 
 -(void)setLocation:(Location *)to

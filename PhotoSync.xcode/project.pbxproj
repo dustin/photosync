@@ -7,6 +7,7 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				DAF071BB07B33A94006FA850,
 				DAF15AF107B1CC790031C5C1,
 				DAF15AF207B1CC790031C5C1,
 				DA1051E907B152A2007CD7D2,
@@ -292,6 +293,7 @@
 				DAEA36BF07B0D8EA00C4E690,
 				DA1051EB07B152A2007CD7D2,
 				DAF15AF307B1CC790031C5C1,
+				DAF071BC07B33A94006FA850,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -513,6 +515,20 @@
 		};
 		DAEA36C007B0D8EA00C4E690 = {
 			fileRef = DAEA36BC07B0D8EA00C4E690;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAF071BB07B33A94006FA850 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PhotoSync.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAF071BC07B33A94006FA850 = {
+			fileRef = DAF071BB07B33A94006FA850;
 			isa = PBXBuildFile;
 			settings = {
 			};

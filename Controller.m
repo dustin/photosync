@@ -2,6 +2,7 @@
 #import "LocEditController.h"
 #import "Locations.h"
 #import "PhotoClient.h"
+#import "PhotoSync.h"
 
 @implementation Controller
 
@@ -73,7 +74,7 @@
 	[[NSNotificationCenter defaultCenter]
 		addObserver:self
 		selector:@selector(refreshList:)
-		name: @"DidUpdate"
+		name: PS_DID_UPDATE
 		object: nil];
 }
 
