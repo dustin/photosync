@@ -37,9 +37,13 @@
 -initWithDict:(NSDictionary *)d keywordMap:(NSDictionary *)kw;
 -(NSString *)dims;
 
+-(NSDictionary *)tokens;
+
 -(int)year;
 -(int)month;
 -(int)day;
+
+-(NSString *)keywordString;
 
 -(void)setId:(int)to;
 

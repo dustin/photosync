@@ -10,6 +10,7 @@
 #import "SyncSubTask.h"
 #import "SyncTask.h"
 #import "Location.h"
+#import "PageWriter.h"
 
 @interface SyncSubTaskDelegate
 -(void)completedTask:(id)sender;
@@ -169,6 +170,14 @@
 		[self fetchTn:tnFn];
 	}
 
+	NSString *pageLoc=[[NSString alloc]
+		initWithFormat:@"%@/pages/%d/%d/%d.html",
+			[location destDir], [photo year], [photo month], [photo imgId]];
+
+	PageWriter *pw=[PageWriter sharedInstance];
+	[pw writePage:@"page" dest:pageLoc tokens:[photo tokens]];
+
+	[pageLoc release];
 	[normalFn release];
 	[tnFn release];
 

@@ -7,6 +7,8 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				DA8FDEB807B481DE00D5B6F7,
+				DA8FDEB907B481DE00D5B6F7,
 				DA12B7F307B36D6F005AA180,
 				DA12B7F407B36D6F005AA180,
 				DAF071CA07B343B9006FA850,
@@ -164,6 +166,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				DA8FDEB407B4818300D5B6F7,
 				DA3659BC07B0A1F700FBB3FF,
 				8D1107310486CEB800E47090,
 				089C165CFE840E0CC02AAC07,
@@ -300,6 +303,8 @@
 				DAF071BC07B33A94006FA850,
 				DAF071CC07B343B9006FA850,
 				DA12B7F507B36D6F005AA180,
+				DA8FDEB507B4818300D5B6F7,
+				DA8FDEBA07B481DE00D5B6F7,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +327,7 @@
 				DAF15AF407B1CC790031C5C1,
 				DAF071CD07B343B9006FA850,
 				DA12B7F607B36D6F005AA180,
+				DA8FDEBB07B481DE00D5B6F7,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,6 +473,49 @@
 		};
 		DA3659D107B0A41900FBB3FF = {
 			fileRef = DA3659CF07B0A41900FBB3FF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DA8FDEB407B4818300D5B6F7 = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text.html;
+			name = page.html;
+			path = content/page.html;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DA8FDEB507B4818300D5B6F7 = {
+			fileRef = DA8FDEB407B4818300D5B6F7;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DA8FDEB807B481DE00D5B6F7 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PageWriter.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DA8FDEB907B481DE00D5B6F7 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = PageWriter.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DA8FDEBA07B481DE00D5B6F7 = {
+			fileRef = DA8FDEB807B481DE00D5B6F7;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DA8FDEBB07B481DE00D5B6F7 = {
+			fileRef = DA8FDEB907B481DE00D5B6F7;
 			isa = PBXBuildFile;
 			settings = {
 			};

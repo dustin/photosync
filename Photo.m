@@ -45,6 +45,34 @@
 	return rv;
 }
 
+-(NSDictionary *)tokens
+{
+	NSDictionary *rv=[NSDictionary dictionaryWithObjectsAndKeys:
+		[NSString stringWithFormat:@"%d", imgId], @"IMGID",
+		taken, @"TAKEN",
+		[self keywordString], @"KEYWORDS",
+		descr, @"DESCR",
+		[NSString stringWithFormat:@"%04d", year], @"YEAR",
+		[NSString stringWithFormat:@"%02d", month], @"MONTH",
+		nil];
+	return rv;
+}
+
+-(NSString *)keywordString
+{
+	NSMutableArray *a=[[NSMutableArray alloc]
+		initWithCapacity:[keywordStrings count]];
+	NSEnumerator *e=[keywordStrings objectEnumerator];
+	id ob=nil;
+	while(ob = [e nextObject]) {
+		[a addObject: ob];
+	}
+	[a sortUsingSelector:@selector(compare:)];
+	NSString *rv=[a componentsJoinedByString:@" "];
+	[a release];
+	return(rv);
+}
+
 -(int)year
 {
 	return year;
