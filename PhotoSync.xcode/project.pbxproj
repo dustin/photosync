@@ -166,6 +166,7 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				DA5FABD407B5A92A002A72C1,
 				DAE684B807B4C6970074D7CD,
 				DA8FDF1807B4BBB400D5B6F7,
 				DA8FDF1907B4BBB400D5B6F7,
@@ -317,6 +318,7 @@
 				DA8FDF2207B4BBB400D5B6F7,
 				DA8FDF2307B4BBB400D5B6F7,
 				DAE684B907B4C6970074D7CD,
+				DA5FABD507B5A92A002A72C1,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +487,19 @@
 		};
 		DA3659D107B0A41900FBB3FF = {
 			fileRef = DA3659CF07B0A41900FBB3FF;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DA5FABD407B5A92A002A72C1 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.icns;
+			path = PhotoSync.icns;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DA5FABD507B5A92A002A72C1 = {
+			fileRef = DA5FABD407B5A92A002A72C1;
 			isa = PBXBuildFile;
 			settings = {
 			};
