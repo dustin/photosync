@@ -166,10 +166,10 @@
 		};
 		29B97317FDCFA39411CA2CEA = {
 			children = (
+				DAE684B807B4C6970074D7CD,
 				DA8FDF1807B4BBB400D5B6F7,
 				DA8FDF1907B4BBB400D5B6F7,
 				DA8FDF1A07B4BBB400D5B6F7,
-				DA8FDF1B07B4BBB400D5B6F7,
 				DA8FDF1C07B4BBB400D5B6F7,
 				DA8FDF1D07B4BBB400D5B6F7,
 				DA8FDEB407B4818300D5B6F7,
@@ -316,6 +316,7 @@
 				DA8FDF2007B4BBB400D5B6F7,
 				DA8FDF2207B4BBB400D5B6F7,
 				DA8FDF2307B4BBB400D5B6F7,
+				DAE684B907B4C6970074D7CD,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,7 +340,6 @@
 				DAF071CD07B343B9006FA850,
 				DA12B7F607B36D6F005AA180,
 				DA8FDEBB07B481DE00D5B6F7,
-				DA8FDF2107B4BBB400D5B6F7,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,15 +559,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		DA8FDF1B07B4BBB400D5B6F7 = {
-			fileEncoding = 30;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.javascript;
-			name = searchfun.js;
-			path = content/searchfun.js;
-			refType = 4;
-			sourceTree = "<group>";
-		};
 		DA8FDF1C07B4BBB400D5B6F7 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -604,12 +595,6 @@
 			settings = {
 			};
 		};
-		DA8FDF2107B4BBB400D5B6F7 = {
-			fileRef = DA8FDF1B07B4BBB400D5B6F7;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		DA8FDF2207B4BBB400D5B6F7 = {
 			fileRef = DA8FDF1C07B4BBB400D5B6F7;
 			isa = PBXBuildFile;
@@ -618,6 +603,21 @@
 		};
 		DA8FDF2307B4BBB400D5B6F7 = {
 			fileRef = DA8FDF1D07B4BBB400D5B6F7;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAE684B807B4C6970074D7CD = {
+			fileEncoding = 30;
+			isa = PBXFileReference;
+			lastKnownFileType = text;
+			name = searchfun.txt;
+			path = content/searchfun.txt;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAE684B907B4C6970074D7CD = {
+			fileRef = DAE684B807B4C6970074D7CD;
 			isa = PBXBuildFile;
 			settings = {
 			};

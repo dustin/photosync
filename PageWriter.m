@@ -53,26 +53,29 @@
 	[pool release];
 }
 
+-(void)copyFile:(NSString *)srcPath to:(NSString *)destPath
+{
+	NSFileManager *fm=[NSFileManager defaultManager];
+	NSLog(@"Copying %@ to %@", srcPath, destPath);
+	[fm copyPath:srcPath toPath:destPath handler:nil];
+}
+
 -(void)copyMiscFiles:(NSString *)destPath
 {
 	NSAutoreleasePool *pool=[[NSAutoreleasePool alloc] init];
 	NSBundle *mainBundle = [NSBundle mainBundle];
-	NSFileManager *fm=[NSFileManager defaultManager];
 
 	NSString *cssSrc=[mainBundle pathForResource:@"style" ofType:@"css"];
 	NSString *cssDest=[NSString stringWithFormat:@"%@/style.css", destPath];
-	NSLog(@"Copying %@ to %@", cssSrc, cssDest);
-	[fm copyPath:cssSrc toPath:cssDest handler:nil];
+	[self copyFile:cssSrc to:cssDest];
 
-	NSString *jsSrc=[mainBundle pathForResource:@"style" ofType:@"css"];
-	NSString *jsDest=[NSString stringWithFormat:@"%@/style.css", destPath];
-	NSLog(@"Copying %@ to %@", jsSrc, jsDest);
-	[fm copyPath:jsSrc toPath:jsDest handler:nil];
+	NSString *jsSrc=[mainBundle pathForResource:@"searchfun" ofType:@"txt"];
+	NSString *jsDest=[NSString stringWithFormat:@"%@/searchfun.js", destPath];
+	[self copyFile:jsSrc to:jsDest];
 
 	NSString *srchSrc=[mainBundle pathForResource:@"search" ofType:@"html"];
 	NSString *srchDest=[NSString stringWithFormat:@"%@/search.html", destPath];
-	NSLog(@"Copying %@ to %@", jsSrc, jsDest);
-	[fm copyPath:srchSrc toPath:srchDest handler:nil];
+	[self copyFile:srchSrc to:srchDest];
 
 	[pool release];
 }
