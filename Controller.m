@@ -72,15 +72,23 @@
 
 -(void)updateStatus:(NSString *)msg with:(int)done of:(int)total
 {
-	if(msg != nil) {
-		[statusText setHidden: NO];
-		[statusText setStringValue:msg];
-	}
+	[statusText setHidden:NO];
 	if(total != 0) {
+		// Deal with the message string first
+		if(msg == nil) {
+			msg=@"";
+		}
+		NSString *myStatus=[[NSString alloc] initWithFormat:
+			@"%d of %d - %@", done, total, msg];
+		[statusText setStringValue:myStatus];
+		[myStatus release];
+
 		[progressIndicator setIndeterminate: NO];
 		[progressIndicator setMaxValue: (double)total];
 		[progressIndicator setHidden: NO];
 		[progressIndicator setDoubleValue:(double)done];
+	} else if(msg != nil) {
+		[statusText setStringValue:msg];
 	}
 }
 

@@ -69,11 +69,6 @@
 	}
 }
 
--(void)updateStatus:(NSString *)msg
-{
-	[self updateStatus:msg with:0 of:0];
-}
-
 -(void)doNextTask:(id)sender
 {
 	// NSLog(@"doNextTask: called.");
@@ -92,8 +87,11 @@
 		[task retain];
 		[subTasks removeLastObject];
 
+		int todo=[[photoClient photos] count];
+		int done=todo - [subTasks count];
+
 		[self updateStatus:[NSString
-			stringWithFormat:@"Processing %@", [task name]]];
+			stringWithFormat:@"Processing %@", [task name]] with:done of:todo];
 		[task run];
 
 		[task release];
@@ -104,10 +102,6 @@
 {
 	// NSLog(@"Completed subtask:  %@", task);
 	// Figure out where where are
-	int todo=[[photoClient photos] count];
-	int done=todo - [subTasks count];
-	[self updateStatus:nil with:done of:todo];
-
 	[self doNextTask:self];
 }
 
@@ -128,7 +122,7 @@
 		object: nil];
 
 	[self updateStatus: [@"Fetching index from "
-		stringByAppendingString: [location url]]];
+		stringByAppendingString: [location url]] with:0 of:0];
 	[photoClient fetchIndexFrom: [location url] downloadDelegate:self];
 }
 
@@ -150,7 +144,6 @@
 	NSAutoreleasePool *pool=[[NSAutoreleasePool alloc] init];
     NSLog(@"Finished downloading index from %@, beginning parse",
 		[location url]);
-	[self updateStatus: @"Parsing index"];
     [photoClient parseIndex];
 	[subTasks removeAllObjects];
 	NSEnumerator *e=[[photoClient photos] objectEnumerator];
