@@ -156,6 +156,57 @@
 #define MONTH_IMG_INDEX_FMT \
 	@"<a href=\"%02d/%d.html\"><img alt=\"%d\" src=\"%02d/%d_tn.%@\"/></a>\n"
 
+-(void)processMonth:(int)month year:(NSString *)year
+	monthDict:(NSDictionary *)months index:(NSMutableString *)yearIdx
+{
+	PageWriter *pw=[PageWriter sharedInstance];
+
+	NSString *monthStr=[[NSString alloc]
+		initWithFormat:@"%@/%02d", year, month];
+	NSMutableString *monthIdx=[[NSMutableString alloc] initWithCapacity:256];
+	id monthList=[months objectForKey:monthStr];
+	if(monthList != nil) {
+		[monthIdx setString:@""];
+
+		// The index
+		[yearIdx appendFormat:YEAR_MONTH_INDEX_FMT,
+			year, month, month, [monthList count],
+			([monthList count] == 1 ? @"image":@"images")];
+
+		NSString *monthDir=[[NSString alloc]
+			initWithFormat:@"%@/pages/%@/%02d",
+			[location destDir], year, month];
+		[self ensureDir:monthDir];
+		NSString *monthFile=[[NSString alloc]
+			initWithFormat:@"%@/pages/%@/%02d.html",
+			[location destDir], year, month];
+
+		// Images within a month
+		NSEnumerator *ye=[monthList objectEnumerator];
+		id photo=nil;
+		while(photo = [ye nextObject]) {
+			[monthIdx appendFormat:MONTH_IMG_INDEX_FMT,
+				month, [photo imgId], [photo imgId], month, [photo imgId],
+				[photo extension]];
+		}
+
+		NSDictionary *toks=[[NSDictionary alloc] initWithObjectsAndKeys:
+			monthIdx, @"IMGS",
+			year, @"YEAR",
+			[NSString stringWithFormat:@"%02d"], @"MONTH",
+			nil];
+
+		[pw writePage:@"month" dest:monthFile tokens:toks];
+
+		[toks release];
+		[monthFile release];
+		[monthDir release];
+	}
+	// month check
+	[monthStr release];
+	[monthIdx release];
+}
+
 -(void)writePages:(NSCountedSet *)yearSet months:(NSDictionary *)months
 {
 	PageWriter *pw=[PageWriter sharedInstance];
@@ -171,7 +222,6 @@
 
 	NSMutableString *indexIdx=[[NSMutableString alloc] initWithCapacity:256];
 	NSMutableString *yearIdx=[[NSMutableString alloc] initWithCapacity:256];
-	NSMutableString *monthIdx=[[NSMutableString alloc] initWithCapacity:256];
 	[indexIdx setString:@""];
 
 	e=[years objectEnumerator];
@@ -192,50 +242,7 @@
 		// Do the months
 		int i=0;
 		for(i=1; i<=12; i++) {
-			NSString *monthStr=[[NSString alloc] initWithFormat:@"%@/%02d",
-				year, i];
-			id monthList=[months objectForKey:monthStr];
-			if(monthList != nil) {
-				[monthIdx setString:@""];
-
-				// The index
-				[yearIdx appendFormat:YEAR_MONTH_INDEX_FMT,
-					year, i, i, [monthList count],
-					([monthList count] == 1 ? @"image":@"images")];
-
-				NSString *monthDir=[[NSString alloc]
-					initWithFormat:@"%@/pages/%@/%02d",
-					[location destDir], year, i];
-				[self ensureDir:monthDir];
-				NSString *monthFile=[[NSString alloc]
-					initWithFormat:@"%@/pages/%@/%02d.html",
-					[location destDir], year, i];
-
-				// Images within a month
-				NSEnumerator *ye=[monthList objectEnumerator];
-				id photo=nil;
-				while(photo = [ye nextObject]) {
-					[monthIdx appendFormat:MONTH_IMG_INDEX_FMT,
-						i, [photo imgId], [photo imgId], i, [photo imgId],
-						[photo extension]];
-				}
-
-				NSDictionary *toks=[[NSDictionary alloc] initWithObjectsAndKeys:
-					monthIdx, @"IMGS",
-					year, @"YEAR",
-					[NSString stringWithFormat:@"%02d"], @"MONTH",
-					nil];
-
-				[pw writePage:@"month" dest:monthFile tokens:toks];
-
-				[toks release];
-				[monthFile release];
-				[monthDir release];
-			} else {
-				NSLog(@"No month %@", monthStr);
-			}
-			// month check
-			[monthStr release];
+			[self processMonth:i year:year monthDict:months index:yearIdx];
 		} // All possible months
 
 		NSDictionary *toks=[[NSDictionary alloc] initWithObjectsAndKeys:
@@ -262,7 +269,6 @@
 	[idxFile release];
 	[indexIdx release];
 	[yearIdx release];
-	[monthIdx release];
 	[years release];
 }
 
