@@ -10,6 +10,7 @@
 
 // Sort descriptor for performing sort by keyword sets
 
+#ifndef GNUSTEP
 @interface KwSortDescriptor : NSSortDescriptor {
 	NSDictionary *kwMap;
 }
@@ -45,6 +46,7 @@
 	return(rv);
 }
 @end
+#endif /* GNUSTEP */
 
 // The page writer
 
@@ -287,12 +289,16 @@
 	}
 
 	// Sorted list of keywords by use
-	KwSortDescriptor *ksd=[[KwSortDescriptor alloc] initWithKwMap:kws];
-	NSArray *sortDescriptors=[[NSArray alloc] initWithObjects: ksd, nil];
 	NSMutableArray *sortedKeys=[[NSMutableArray alloc]
 		initWithCapacity:[kws count]];
 	[sortedKeys addObjectsFromArray:[kws allKeys]];
+#ifndef GNUSTEP
+	KwSortDescriptor *ksd=[[KwSortDescriptor alloc] initWithKwMap:kws];
+	NSArray *sortDescriptors=[[NSArray alloc] initWithObjects: ksd, nil];
 	[sortedKeys sortUsingDescriptors: sortDescriptors];
+	[sortDescriptors release];
+	[ksd release];
+#endif
 
 	// quoted strings
 	NSMutableArray *quoteKws=[[NSMutableArray alloc]
@@ -360,9 +366,7 @@
 	[outString release];
 	[destFile release];
 	[quoteKws release];
-	[sortDescriptors release];
 	[sortedKeys release];
-	[ksd release];
 	[kws release];
 	[pool release];
 }

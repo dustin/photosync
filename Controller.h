@@ -1,6 +1,6 @@
 /* Controller */
 
-#import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
 
 #define BUTTON_SYNC 1
 #define BUTTON_STOP 2

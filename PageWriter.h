@@ -6,7 +6,7 @@
 //  Copyright 2005 Dustin Sallings. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
 #import "Location.h"
 #import "PhotoClient.h"
 

@@ -1,6 +1,6 @@
 /* LocEditController */
 
-#import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
 #import "Location.h"
 
 @interface LocEditController : NSWindowController

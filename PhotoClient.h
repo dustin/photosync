@@ -6,7 +6,7 @@
 //  Copyright 2005 Dustin Sallings <dustin@spy.net>. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <AppKit/AppKit.h>
 #import "Photo.h"
 
 @interface PhotoClient : NSObject {

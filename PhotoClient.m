@@ -7,6 +7,7 @@
 //
 
 #import "PhotoClient.h"
+#import "PhotoSync.h"
 
 @implementation PhotoClient
 
@@ -30,20 +31,28 @@
 
 -(BOOL)tryRequest:(NSURLRequest *)theRequest
 {
-	BOOL rv=FALSE;
+	BOOL rv=NO;
 	NSLog(@"Trying %@", [theRequest URL]);
 	NSHTTPURLResponse *resp=nil;
+#ifdef GNUSTEP
+	URLError *err=nil;
+#else
 	NSError *err=nil;
-	[NSURLConnection sendSynchronousRequest:theRequest
+#endif
+	NSData *body=[NSURLConnection sendSynchronousRequest:theRequest
 		returningResponse:&resp error:&err];
 	int rc=500;
 	if(resp != nil) {
 		rc=[resp statusCode];
 	}
-	if(rc == 200){
-		rv=TRUE;
+	if(rc == 200 || err == nil){
+		rv=YES;
 	} else {
 		NSLog(@"%@ failed (rc=%d).", [theRequest URL], rc);
+		NSString *str=[[NSString alloc] initWithData: body
+			encoding:NSUTF8StringEncoding];
+		NSLog(@"Response data:  %@", str);
+		[str release];
 	}
 	return(rv);
 }
@@ -51,7 +60,7 @@
 -(BOOL)authenticateTo:(NSString *)base
 	user:(NSString *)u passwd:(NSString *)p forUser:(NSString *)altUser
 {
-	BOOL rv=FALSE;
+	BOOL rv=NO;
 	if(u != nil && [u length] > 0) {
 		NSLog(@"Authenticating to %@ as %@", base, u);
 		NSURL *url=[[NSURL alloc] initWithString:
@@ -70,7 +79,7 @@
 
 		rv=[self tryRequest:theRequest];
 
-		if(rv == TRUE && altUser != nil && [altUser length] > 0) {
+		if(rv == YES && altUser != nil && [altUser length] > 0) {
 			NSLog(@"Attempting to setuid");
 			[url release];
 			url=[[NSURL alloc] initWithString:

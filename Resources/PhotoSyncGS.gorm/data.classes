@@ -1,0 +1,56 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    Controller = {
+	Actions = (
+	    "newLocation:",
+	    "performSync:",
+	    "rmLocation:",
+	    "addLocation:",
+	    "showEditor:"
+	);
+	Outlets = (
+	    locEdit,
+	    locTable,
+	    progressIndicator,
+	    statusText,
+	    syncButton
+	);
+	Super = NSWindowController;
+    };
+    FirstResponder = {
+	Actions = (
+	    "addLocation:",
+	    "browse:",
+	    "loadArray:",
+	    "newLocation:",
+	    "performSync:",
+	    "rmLocation:",
+	    "save:",
+	    "showEditor:"
+	);
+	Super = NSObject;
+    };
+    LocEditController = {
+	Actions = (
+	    "browse:",
+	    "cancel:",
+	    "save:"
+	);
+	Outlets = (
+	    destination,
+	    password,
+	    url,
+	    username,
+	    forUser
+	);
+	Super = NSWindowController;
+    };
+    Locations = {
+	Actions = (
+	    "loadArray:"
+	);
+	Outlets = (
+	);
+	Super = NSObject;
+    };
+}

@@ -175,8 +175,10 @@
 		object: nil];
 
 	// Don't allow in-memory cache
+#ifndef GNUSTEP
 	NSURLCache *cache=[NSURLCache sharedURLCache];
 	[cache setMemoryCapacity:0];
+#endif
 }
 
 -(void)refreshList:(id)sender

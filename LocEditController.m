@@ -6,10 +6,10 @@
 - (IBAction)browse:(id)sender
 {
 	NSOpenPanel *op=[NSOpenPanel openPanel];
-	[op setCanChooseFiles:FALSE];
-	[op setCanChooseDirectories:TRUE];
-	[op setCanCreateDirectories:TRUE];
-	[op setAllowsMultipleSelection:FALSE];
+	[op setCanChooseFiles:NO];
+	[op setCanChooseDirectories:YES];
+	[op setCanCreateDirectories:YES];
+	[op setAllowsMultipleSelection:NO];
 	int result = [op runModalForTypes:nil];
 	if(result == NSOKButton) {
 		[destination setStringValue:[[op filenames] objectAtIndex:0]];

@@ -13,7 +13,7 @@
 -init
 {
 	id rv=[super init];
-	_active = TRUE;
+	_active = YES;
 	_url=@"";
 	_username=@"";
 	_password=@"";
