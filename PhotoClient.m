@@ -34,11 +34,7 @@
 	BOOL rv=NO;
 	NSLog(@"Trying %@", [theRequest URL]);
 	NSHTTPURLResponse *resp=nil;
-#ifdef GNUSTEP
-	URLError *err=nil;
-#else
 	NSError *err=nil;
-#endif
 	NSData *body=[NSURLConnection sendSynchronousRequest:theRequest
 		returningResponse:&resp error:&err];
 	int rc=500;
