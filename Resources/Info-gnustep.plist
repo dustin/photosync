@@ -10,4 +10,5 @@
     NSMainNibFile = PhotoSyncGS.gorm;
     NSPrincipalClass = NSApplication;
     NSRole = Application;
+    URL = "http://bleu.west.spy.net/~dustin/projects/photosync/index.xtp";
 }

@@ -39,7 +39,7 @@
 	PhotoSyncGS.gorm
     );
     LANGUAGE = English;
-    LAST_EDITING = "2005-02-13 10:12:54 +0000";
+    LAST_EDITING = "2005-02-13 10:25:12 +0000";
     LIBRARIES = (
 	"gnustep-base",
 	"gnustep-gui",

@@ -7,7 +7,7 @@ include $(GNUSTEP_MAKEFILES)/common.make
 #
 # Application
 #
-VERSION = 0.1
+VERSION = 1.1
 PACKAGE_NAME = PhotoSync
 APP_NAME = PhotoSync
 PhotoSync_APPLICATION_ICON = 
