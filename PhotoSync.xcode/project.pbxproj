@@ -7,6 +7,10 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				DA1051F307B16436007CD7D2,
+				DA1051F407B16436007CD7D2,
+				DA1051E907B152A2007CD7D2,
+				DA1051EA07B152A2007CD7D2,
 				DAEA36B707B0D8D700C4E690,
 				DAEA36B907B0D8EA00C4E690,
 				DAEA36BA07B0D8EA00C4E690,
@@ -286,6 +290,8 @@
 				DAEA36B607B0D8CF00C4E690,
 				DAEA36BD07B0D8EA00C4E690,
 				DAEA36BF07B0D8EA00C4E690,
+				DA1051EB07B152A2007CD7D2,
+				DA1051F507B16436007CD7D2,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +310,8 @@
 				DAEA36B807B0D8D700C4E690,
 				DAEA36BE07B0D8EA00C4E690,
 				DAEA36C007B0D8EA00C4E690,
+				DA1051EC07B152A2007CD7D2,
+				DA1051F607B16436007CD7D2,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +364,62 @@
 //DA2
 //DA3
 //DA4
+		DA1051E907B152A2007CD7D2 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = PhotoClient.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DA1051EA07B152A2007CD7D2 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = PhotoClient.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DA1051EB07B152A2007CD7D2 = {
+			fileRef = DA1051E907B152A2007CD7D2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DA1051EC07B152A2007CD7D2 = {
+			fileRef = DA1051EA07B152A2007CD7D2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DA1051F307B16436007CD7D2 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = DownloadDelegate.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DA1051F407B16436007CD7D2 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = DownloadDelegate.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DA1051F507B16436007CD7D2 = {
+			fileRef = DA1051F307B16436007CD7D2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DA1051F607B16436007CD7D2 = {
+			fileRef = DA1051F407B16436007CD7D2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
 		DA3659BC07B0A1F700FBB3FF = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.nib;

@@ -1,6 +1,7 @@
 #import "Controller.h"
 #import "LocEditController.h"
 #import "Locations.h"
+#import "PhotoClient.h"
 
 @implementation Controller
 
@@ -13,8 +14,23 @@
 
 - (IBAction)performSync:(id)sender
 {
-	NSLog(@"<Insert synchronization code here.>");
+	NSLog(@"Grabbing index");
+	PhotoClient *pc=[[PhotoClient alloc] init];
+	
+	NSEnumerator *e=[[locTable dataSource] objectEnumerator];
+    id object=nil;
+    while(object = [e nextObject]) {
+	
+		NSLog(@"Got %@, url=%@, dest=%@", object, [object url], [object destDir]);
+		
+		[pc fetchIndexFrom: [object url]
+			to: [[object destDir]
+				stringByAppendingPathComponent: @"index.xml"]];
+    }
+	
+	[pc release];
 }
+
 
 - (IBAction)rmLocation:(id)sender
 {
