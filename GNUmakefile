@@ -32,7 +32,6 @@ Resources/year.html
 # Header files
 #
 PhotoSync_HEADER_FILES = \
-AppController.h \
 Controller.h \
 Location.h \
 Locations.h \
@@ -47,7 +46,6 @@ SyncTask.h
 # Class files
 #
 PhotoSync_OBJC_FILES = \
-AppController.m \
 Controller.m \
 Location.m \
 Locations.m \

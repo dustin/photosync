@@ -2,7 +2,6 @@
     APPLICATIONICON = "";
     APP_DOCUMENT_BASED = NO;
     CLASS_FILES = (
-	AppController.m,
 	Controller.m,
 	Location.m,
 	Locations.m,
@@ -21,7 +20,6 @@
     FRAMEWORKS = (
     );
     HEADER_FILES = (
-	AppController.h,
 	Controller.h,
 	Location.h,
 	Locations.h,
@@ -39,7 +37,7 @@
 	PhotoSyncGS.gorm
     );
     LANGUAGE = English;
-    LAST_EDITING = "2005-02-13 10:25:12 +0000";
+    LAST_EDITING = "2005-02-13 10:29:41 +0000";
     LIBRARIES = (
 	"gnustep-base",
 	"gnustep-gui",
