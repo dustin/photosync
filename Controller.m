@@ -177,6 +177,14 @@
 	[statusText setHidden:YES];
 	[progressIndicator setHidden:YES];
 
+#ifdef GNUSTEP
+	// gorm doesn't currently let me specify the actual type of button cell.  I
+	// want a switch, so I'll fix it up here.
+	id actColumn=[[locTable tableColumnWithIdentifier:@"active"] dataCell];
+	[actColumn setButtonType: NSSwitchButton];
+	[actColumn setTitle:@""];
+#endif
+
 	// Don't allow in-memory cache
 #ifndef GNUSTEP
 	NSURLCache *cache=[NSURLCache sharedURLCache];
