@@ -8,7 +8,6 @@
 
 #import "Location.h"
 
-
 @implementation Location
 
 -init
@@ -58,6 +57,7 @@
 
 -(void)dealloc
 {
+	NSLog(@"Deallocing %@", self);
 	if(_url != nil) {
 		[_url release];
 		_url=nil;

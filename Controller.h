@@ -9,6 +9,8 @@
     IBOutlet NSProgressIndicator *progressIndicator;
     IBOutlet NSTextField *statusText;
     IBOutlet NSButton *syncButton;
+
+	NSMutableArray *stuffToDo;
 }
 - (IBAction)newLocation:(id)sender;
 - (IBAction)performSync:(id)sender;

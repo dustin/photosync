@@ -7,6 +7,10 @@
 	objects = {
 		080E96DDFE201D6D7F000001 = {
 			children = (
+				DA12B7F307B36D6F005AA180,
+				DA12B7F407B36D6F005AA180,
+				DAF071CA07B343B9006FA850,
+				DAF071CB07B343B9006FA850,
 				DAF071BB07B33A94006FA850,
 				DAF15AF107B1CC790031C5C1,
 				DAF15AF207B1CC790031C5C1,
@@ -294,6 +298,8 @@
 				DA1051EB07B152A2007CD7D2,
 				DAF15AF307B1CC790031C5C1,
 				DAF071BC07B33A94006FA850,
+				DAF071CC07B343B9006FA850,
+				DA12B7F507B36D6F005AA180,
 			);
 			isa = PBXResourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,6 +320,8 @@
 				DAEA36C007B0D8EA00C4E690,
 				DA1051EC07B152A2007CD7D2,
 				DAF15AF407B1CC790031C5C1,
+				DAF071CD07B343B9006FA850,
+				DA12B7F607B36D6F005AA180,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +398,34 @@
 		};
 		DA1051EC07B152A2007CD7D2 = {
 			fileRef = DA1051EA07B152A2007CD7D2;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DA12B7F307B36D6F005AA180 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = SyncSubTask.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DA12B7F407B36D6F005AA180 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = SyncSubTask.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DA12B7F507B36D6F005AA180 = {
+			fileRef = DA12B7F307B36D6F005AA180;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DA12B7F607B36D6F005AA180 = {
+			fileRef = DA12B7F407B36D6F005AA180;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -529,6 +565,34 @@
 		};
 		DAF071BC07B33A94006FA850 = {
 			fileRef = DAF071BB07B33A94006FA850;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAF071CA07B343B9006FA850 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			path = SyncTask.h;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAF071CB07B343B9006FA850 = {
+			fileEncoding = 4;
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.objc;
+			path = SyncTask.m;
+			refType = 4;
+			sourceTree = "<group>";
+		};
+		DAF071CC07B343B9006FA850 = {
+			fileRef = DAF071CA07B343B9006FA850;
+			isa = PBXBuildFile;
+			settings = {
+			};
+		};
+		DAF071CD07B343B9006FA850 = {
+			fileRef = DAF071CB07B343B9006FA850;
 			isa = PBXBuildFile;
 			settings = {
 			};

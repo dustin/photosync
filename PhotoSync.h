@@ -8,4 +8,3 @@
  */
 
 #define PS_DID_UPDATE @"PS_DidUpdate"
-#define PS_TASK_COMPLETE @"PS_TaskComplete"

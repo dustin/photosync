@@ -23,7 +23,7 @@
 -initWithIndexPath:(NSString *)path;
 
 -(BOOL)authenticateTo:(NSString *)base user:(NSString *)u passwd:(NSString *)p;
--(void)fetchIndexFrom:(NSString *)base;
+-(void)fetchIndexFrom:(NSString *)base downloadDelegate:(id)del;
 
 // Parse the index
 -(void)parseIndex;

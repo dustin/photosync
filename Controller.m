@@ -3,6 +3,7 @@
 #import "Locations.h"
 #import "PhotoClient.h"
 #import "PhotoSync.h"
+#import "SyncTask.h"
 
 @implementation Controller
 
@@ -14,34 +15,75 @@
 	[loc release];
 }
 
+-(void)doNextTask:(id)sender
+{
+	NSLog(@"doNextTask: called.");
+	if([stuffToDo count] == 0) {
+		NSLog(@"All tasks complete.");
+		[syncButton setEnabled: YES];
+		[statusText setHidden: YES];
+		[progressIndicator setHidden: YES];
+	} else {
+		NSLog(@"Starting a task");
+		SyncTask *task=[stuffToDo lastObject];
+		[task retain];
+		[stuffToDo removeLastObject];
+
+		[task run];
+		NSLog(@"Finished with %@.", task);
+		[task release];
+	}
+}
+
+-(void)completedTask:(SyncTask *)task
+{
+	NSLog(@"Completed task:  %@", task);
+	[self doNextTask:self];
+}
+
+-(void)updateStatus:(NSString *)msg with:(int)done of:(int)total
+{
+	if(msg != nil) {
+		[statusText setHidden: NO];
+		[statusText setStringValue:msg];
+	}
+	if(total != 0) {
+		[progressIndicator setIndeterminate: NO];
+		[progressIndicator setMaxValue: (double)total];
+		[progressIndicator setHidden: NO];
+		[progressIndicator setDoubleValue:(double)done];
+	}
+}
+
 - (IBAction)performSync:(id)sender
 {
 	NSLog(@"Grabbing index");
+	[syncButton setEnabled: FALSE];
 	
+	// Clear out the work list
+	[stuffToDo removeAllObjects];
 	NSEnumerator *e=[[locTable dataSource] objectEnumerator];
     id object=nil;
     while(object = [e nextObject]) {
 		if([object isActive]) {
-			NSString *idxpath=[[object destDir]
-				stringByAppendingPathComponent: @"index.xml"];
-
-			PhotoClient *pc=[[PhotoClient alloc] initWithIndexPath:idxpath];
-			// First, let's authenticate
-			BOOL authed=[pc authenticateTo:[object url] user:[object username]
-				passwd:[object password]];
-
-			if(authed) {
-				// Now set up the index path and get it
-				[pc fetchIndexFrom: [object url]];
-			} else {
+			NSLog(@"Setting up %@ with %d",
+				[object url], [[object username] retainCount]);
+			SyncTask *st=[[SyncTask alloc] initWithLocation:object
+				delegate:self];
+			if(st == nil) {
 				NSLog(@"Authentication failed");
 				NSRunAlertPanel(@"Authentication Failed",
 					[NSString stringWithFormat:@"Authentication failed for %@",
 						[object url]], @"OK", nil, nil);
+			} else {
+				NSLog(@"Queuing %@", st);
+				[stuffToDo insertObject:st atIndex:0];
 			}
-			[pc release];
+			[st release];
 		}
     }
+
+	[self doNextTask:sender];
 }
 
 
@@ -68,9 +110,11 @@
 {
 	[self setWindowFrameAutosaveName: @"MainWindow"];
 	[self initDefaults];
-	
+
+	stuffToDo=[[NSMutableArray alloc] init];
+
 	[locTable setDoubleAction:@selector(doubleClicked:)];
-	
+
 	[[NSNotificationCenter defaultCenter]
 		addObserver:self
 		selector:@selector(refreshList:)

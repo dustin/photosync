@@ -41,7 +41,7 @@
 		timeoutInterval:60.0];
 	[theRequest setHTTPMethod: @"POST"];
 	NSString *bodyString=[[NSString alloc]
-		initWithFormat:@"username=%@&password=%@", u, p, nil];
+		initWithFormat:@"username=%@&password=%@", u, p];
 	[theRequest setHTTPBody:
 		[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
 	[bodyString release];
@@ -64,7 +64,7 @@
 	return(rv);
 }
 
--(void)fetchIndexFrom:(NSString *)base
+-(void)fetchIndexFrom:(NSString *)base downloadDelegate:(id)del
 {
 	NSLog(@"Fetching index from %@ to %@", base, indexPath);
 	NSURL *u=[[NSURL alloc] initWithString:
@@ -73,19 +73,13 @@
 		cachePolicy:NSURLRequestReloadIgnoringCacheData
 		timeoutInterval:60.0];
 	NSURLDownload *dl=[[NSURLDownload alloc]
-		initWithRequest:theRequest delegate: self];
+		initWithRequest:theRequest delegate: del];
 	if(dl != nil) {
 		[dl setDestination:indexPath allowOverwrite:YES];
 	} else {
 		NSLog(@"Can't instantiate download from %@.", u);
 	}
 	[u release];
-}
-
-- (void)downloadDidFinish:(NSURLDownload *)download
-{
-	NSLog(@"Finished downloading %@, beginning parse", indexPath);
-	[self parseIndex];
 }
 
 -(void)parseIndex
