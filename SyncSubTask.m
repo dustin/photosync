@@ -88,7 +88,7 @@
 	[url release];
 }
 
--(void)fetchNormal:(NSString *)path
+-(void)fetchTn:(NSString *)path
 {
 	NSString *u=[[NSString alloc]
 		initWithFormat:@"%@/PhotoServlet?id=%d&thumbnail=1",
@@ -97,7 +97,7 @@
 	[u release];
 }
 
--(void)fetchTn:(NSString *)path
+-(void)fetchNormal:(NSString *)path
 {
 	// XXX:  hard-coded scale
 	NSString *u=[[NSString alloc]
