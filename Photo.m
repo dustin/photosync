@@ -45,6 +45,11 @@
 	return rv;
 }
 
+-(NSComparisonResult)compare:(Photo *)to
+{
+	return([taken compare:[to taken]]);
+}
+
 -(NSDictionary *)tokens
 {
 	NSDictionary *rv=[NSDictionary dictionaryWithObjectsAndKeys:

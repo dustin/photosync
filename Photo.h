@@ -36,6 +36,9 @@
 
 -initWithDict:(NSDictionary *)d keywordMap:(NSDictionary *)kw;
 -(NSString *)dims;
+-(NSSet *)keywordStrings;
+
+-(NSComparisonResult)compare:(Photo *)to;
 
 -(NSDictionary *)tokens;
 
