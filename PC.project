@@ -71,19 +71,19 @@
     PRINCIPAL_CLASS = NSApplication;
     PROJECT_AUTHORS = (
     );
-    PROJECT_COPYRIGHT = "Copyright (C) 200x";
-    PROJECT_COPYRIGHT_DESC = "Released under ...";
-    PROJECT_CREATOR = "User &";
-    PROJECT_DESCRIPTION = "No description avaliable!";
+    PROJECT_COPYRIGHT = "Copyright (C) 2005";
+    PROJECT_COPYRIGHT_DESC = "Released under a BSD license";
+    PROJECT_CREATOR = "Dustin Sallings";
+    PROJECT_DESCRIPTION = "A tool for building offline sites from PhotoServlet.";
     PROJECT_DOCUMENTTYPES = (
     );
     PROJECT_GROUP = "No group avaliable!";
-    PROJECT_MAINTAINER = "User &";
+    PROJECT_MAINTAINER = "Dustin Sallings";
     PROJECT_NAME = PhotoSync;
-    PROJECT_RELEASE = 0.1;
-    PROJECT_SUMMARY = "No summary avaliable!";
+    PROJECT_RELEASE = 1.1;
+    PROJECT_SUMMARY = "A tool for building offline sites from PhotoServlet.";
     PROJECT_TYPE = Application;
-    PROJECT_URL = "";
+    PROJECT_URL = "http://bleu.west.spy.net/~dustin/projects/photosync/index.xtp";
     SEARCH_HEADER_DIRS = (
 	"/home/dustin/GNUstep/Library/Frameworks/URLLoading.framework/Headers/"
     );
