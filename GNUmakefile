@@ -19,7 +19,14 @@ GNUSTEP_INSTALLATION_DIR = $(HOME)/GNUstep
 #
 PhotoSyncGS_RESOURCE_FILES = \
 Resources/PhotoSyncGS.gorm\
-Resources/Info-gnustep.plist
+Resources/Info-gnustep.plist \
+Resources/index.html \
+Resources/month.html \
+Resources/page.html \
+Resources/search.html \
+Resources/searchfun.txt \
+Resources/style.css \
+Resources/year.html
 
 #
 # Header files

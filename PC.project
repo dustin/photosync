@@ -39,7 +39,7 @@
 	PhotoSyncGS.gorm
     );
     LANGUAGE = English;
-    LAST_EDITING = "2005-02-11 09:59:46 +0000";
+    LAST_EDITING = "2005-02-12 05:14:55 +0000";
     LIBRARIES = (
 	"gnustep-base",
 	"gnustep-gui",
@@ -52,11 +52,22 @@
     MAKEFILEDIR = "$(GNUSTEP_MAKEFILES)";
     OBJC_COMPILEROPTIONS = "";
     OTHER_RESOURCES = (
-	"Info-gnustep.plist"
+	"Info-gnustep.plist",
+	index.html,
+	month.html,
+	page.html,
+	search.html,
+	searchfun.txt,
+	style.css,
+	year.html
     );
     OTHER_SOURCES = (
 	main.m
     );
+    PC_WINDOWS = {
+	ProjectWindow = "12 105 560 448 0 0  1216 854 ";
+	ShowToolbar = YES;
+    };
     PRINCIPAL_CLASS = NSApplication;
     PROJECT_AUTHORS = (
     );
