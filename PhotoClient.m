@@ -60,7 +60,7 @@
 		NSLog(@"Looks like we didn't authenticate (rc=%d).", rc);
 	}
 
-	[u release];
+	[url release];
 	return(rv);
 }
 
