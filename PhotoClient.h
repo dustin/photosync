@@ -11,7 +11,6 @@
 
 @interface PhotoClient : NSObject {
 
-	BOOL lastWasSpace;
 	NSString *el;
 	NSMutableDictionary *current;
 	NSMutableDictionary *keywords;
