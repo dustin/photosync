@@ -25,6 +25,8 @@
 		[progressIndicator setHidden: YES];
 	} else {
 		NSLog(@"Starting a task");
+		// Hide the progress indicator again so it isn't just stuck.
+		[progressIndicator setHidden: YES];
 		SyncTask *task=[stuffToDo lastObject];
 		[task retain];
 		[stuffToDo removeLastObject];
