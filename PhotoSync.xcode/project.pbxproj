@@ -301,17 +301,7 @@
 			files = (
 				8D11072B0486CEB800E47090,
 				DA3659BD07B0A1F800FBB3FF,
-				DA3659D007B0A41900FBB3FF,
-				DAEA36B607B0D8CF00C4E690,
-				DAEA36BD07B0D8EA00C4E690,
-				DAEA36BF07B0D8EA00C4E690,
-				DA1051EB07B152A2007CD7D2,
-				DAF15AF307B1CC790031C5C1,
-				DAF071BC07B33A94006FA850,
-				DAF071CC07B343B9006FA850,
-				DA12B7F507B36D6F005AA180,
 				DA8FDEB507B4818300D5B6F7,
-				DA8FDEBA07B481DE00D5B6F7,
 				DA8FDF1E07B4BBB400D5B6F7,
 				DA8FDF1F07B4BBB400D5B6F7,
 				DA8FDF2007B4BBB400D5B6F7,
@@ -340,8 +330,8 @@
 				DA1051EC07B152A2007CD7D2,
 				DAF15AF407B1CC790031C5C1,
 				DAF071CD07B343B9006FA850,
-				DA12B7F607B36D6F005AA180,
 				DA8FDEBB07B481DE00D5B6F7,
+				DA2A5B9107B5DFFE001380C1,
 			);
 			isa = PBXSourcesBuildPhase;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,12 +400,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		DA1051EB07B152A2007CD7D2 = {
-			fileRef = DA1051E907B152A2007CD7D2;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		DA1051EC07B152A2007CD7D2 = {
 			fileRef = DA1051EA07B152A2007CD7D2;
 			isa = PBXBuildFile;
@@ -438,13 +422,7 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		DA12B7F507B36D6F005AA180 = {
-			fileRef = DA12B7F307B36D6F005AA180;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		DA12B7F607B36D6F005AA180 = {
+		DA2A5B9107B5DFFE001380C1 = {
 			fileRef = DA12B7F407B36D6F005AA180;
 			isa = PBXBuildFile;
 			settings = {
@@ -478,12 +456,6 @@
 			path = Location.m;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		DA3659D007B0A41900FBB3FF = {
-			fileRef = DA3659CE07B0A41900FBB3FF;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		DA3659D107B0A41900FBB3FF = {
 			fileRef = DA3659CF07B0A41900FBB3FF;
@@ -534,12 +506,6 @@
 			path = PageWriter.m;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		DA8FDEBA07B481DE00D5B6F7 = {
-			fileRef = DA8FDEB807B481DE00D5B6F7;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		DA8FDEBB07B481DE00D5B6F7 = {
 			fileRef = DA8FDEB907B481DE00D5B6F7;
@@ -645,12 +611,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		DAEA36B607B0D8CF00C4E690 = {
-			fileRef = DAEA36B507B0D8CF00C4E690;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		DAEA36B707B0D8D700C4E690 = {
 			fileEncoding = 30;
 			isa = PBXFileReference;
@@ -697,20 +657,8 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		DAEA36BD07B0D8EA00C4E690 = {
-			fileRef = DAEA36B907B0D8EA00C4E690;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		DAEA36BE07B0D8EA00C4E690 = {
 			fileRef = DAEA36BA07B0D8EA00C4E690;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		DAEA36BF07B0D8EA00C4E690 = {
-			fileRef = DAEA36BB07B0D8EA00C4E690;
 			isa = PBXBuildFile;
 			settings = {
 			};
@@ -729,12 +677,6 @@
 			refType = 4;
 			sourceTree = "<group>";
 		};
-		DAF071BC07B33A94006FA850 = {
-			fileRef = DAF071BB07B33A94006FA850;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
 		DAF071CA07B343B9006FA850 = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
@@ -750,12 +692,6 @@
 			path = SyncTask.m;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		DAF071CC07B343B9006FA850 = {
-			fileRef = DAF071CA07B343B9006FA850;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		DAF071CD07B343B9006FA850 = {
 			fileRef = DAF071CB07B343B9006FA850;
@@ -778,12 +714,6 @@
 			path = Photo.m;
 			refType = 4;
 			sourceTree = "<group>";
-		};
-		DAF15AF307B1CC790031C5C1 = {
-			fileRef = DAF15AF107B1CC790031C5C1;
-			isa = PBXBuildFile;
-			settings = {
-			};
 		};
 		DAF15AF407B1CC790031C5C1 = {
 			fileRef = DAF15AF207B1CC790031C5C1;
