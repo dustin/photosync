@@ -327,6 +327,7 @@
 			[ids addObject: idStr];
 			[idStr release];
 		}
+		[ids sortUsingSelector:@selector(compare:)];
 		[outString appendFormat:@"imgs[%d]=[%@];\n", i,
 			[ids componentsJoinedByString:@", "]];
 		[ids release];
