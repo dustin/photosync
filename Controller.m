@@ -20,24 +20,26 @@
 	NSEnumerator *e=[[locTable dataSource] objectEnumerator];
     id object=nil;
     while(object = [e nextObject]) {
-		NSString *idxpath=[[object destDir]
-			stringByAppendingPathComponent: @"index.xml"];
+		if([object isActive]) {
+			NSString *idxpath=[[object destDir]
+				stringByAppendingPathComponent: @"index.xml"];
 
-		PhotoClient *pc=[[PhotoClient alloc] initWithIndexPath:idxpath];
-		// First, let's authenticate
-		BOOL authed=[pc authenticateTo:[object url] user:[object username]
-			passwd:[object password]];
+			PhotoClient *pc=[[PhotoClient alloc] initWithIndexPath:idxpath];
+			// First, let's authenticate
+			BOOL authed=[pc authenticateTo:[object url] user:[object username]
+				passwd:[object password]];
 
-		if(authed) {
-			// Now set up the index path and get it
-			[pc fetchIndexFrom: [object url]];
-		} else {
-			NSLog(@"Authentication failed");
-			NSRunAlertPanel(@"Authentication Failed",
-				[NSString stringWithFormat:@"Authentication failed for %@",
-					[object url]], @"OK", nil, nil);
+			if(authed) {
+				// Now set up the index path and get it
+				[pc fetchIndexFrom: [object url]];
+			} else {
+				NSLog(@"Authentication failed");
+				NSRunAlertPanel(@"Authentication Failed",
+					[NSString stringWithFormat:@"Authentication failed for %@",
+						[object url]], @"OK", nil, nil);
+			}
+			[pc release];
 		}
-		[pc release];
     }
 }
 
