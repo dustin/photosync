@@ -2,7 +2,7 @@
 
 @implementation Locations
 
--(id)init
+-init
 {
 	self=[super init];
 	_locations=[[NSMutableArray alloc] init];
@@ -45,7 +45,7 @@
 	[_locations removeAllObjects];
 }
 
--(id)toArray
+-toArray
 {
 	NSMutableArray *a=[[NSMutableArray alloc] init];
 	NSEnumerator *e=[_locations objectEnumerator];
@@ -69,7 +69,7 @@
 	}
 }
 
--(id)objectAtIndex:(unsigned)which
+-objectAtIndex:(unsigned)which
 {
 	return([_locations objectAtIndex:which]);
 }

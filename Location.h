@@ -20,7 +20,7 @@
 
 }
 
--(id)initWithDict:(NSDictionary *)d;
+-initWithDict:(NSDictionary *)d;
 -(NSDictionary *)toDict;
 
 -(BOOL)active;

@@ -11,7 +11,7 @@
 
 @implementation DownloadDelegate
 
--(id)initWithDest:(NSString *)dest
+-initWithDest:(NSString *)dest
 {
     id rv=[super init];
 	_finalDest=dest;

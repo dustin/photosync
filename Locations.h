@@ -12,11 +12,11 @@
 -(void)removeItemAt: (int)which;
 -(void)removeAll;
 
--(id)objectAtIndex:(unsigned int)which;
+-objectAtIndex:(unsigned int)which;
 
 -(NSEnumerator *)objectEnumerator;
 
--(id)toArray;
+-toArray;
 -(void)loadArray:(id)arry;
 
 @end

@@ -13,7 +13,7 @@
 	NSString *_finalDest;
 }
 
--(id)initWithDest:(NSString *)dest;
+-initWithDest:(NSString *)dest;
 
 - (void)download:(NSURLDownload *)download didCreateDestination:(NSString *)path;
 - (void)download:(NSURLDownload *)download didFailWithError:(NSError *)error;

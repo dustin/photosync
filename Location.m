@@ -11,7 +11,7 @@
 
 @implementation Location
 
--(id)init
+-init
 {
 	id rv=[super init];
 	_active = TRUE;
@@ -30,7 +30,7 @@
 		_url, [self retainCount], nil]);
 }
 
--(id)initWithDict:(NSDictionary *)d
+-initWithDict:(NSDictionary *)d
 {
 	self=[super init];
 	_active = [[d objectForKey:@"active"] boolValue];
