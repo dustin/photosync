@@ -11,9 +11,34 @@
 
 @implementation PhotoClient
 
--(void)authenticateTo:(NSString *)base user:(NSString *)u passwd:(NSString *)p
+-(BOOL)authenticateTo:(NSString *)base user:(NSString *)u passwd:(NSString *)p
 {
 	NSLog(@"Authenticating to %@ as %@", base, u);
+	BOOL rv=FALSE;
+	NSURL *url=[[NSURL alloc] initWithString:
+		[NSString stringWithFormat: @"%@/login.do?username=%@&password=%@",
+			base, u, p, nil]];
+
+	NSURLRequest *theRequest=[NSURLRequest requestWithURL:url
+		cachePolicy:NSURLRequestReloadIgnoringCacheData
+		timeoutInterval:60.0];
+
+	NSURLResponse *resp=nil;
+	NSError *err=nil;
+	[NSURLConnection sendSynchronousRequest:theRequest
+		returningResponse:&resp error:&err];
+	int rc=500;
+	if(resp != nil) {
+		rc=[resp statusCode];
+	}
+	if(rc == 200){
+		rv=TRUE;
+	} else {
+		NSLog(@"Looks like we didn't authenticate (rc=%d).", rc);
+	}
+
+	[u release];
+	return(rv);
 }
 
 -(void)fetchIndexFrom:(NSString *)base to:(NSString *)path

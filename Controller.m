@@ -21,12 +21,24 @@
     id object=nil;
     while(object = [e nextObject]) {
 		PhotoClient *pc=[[PhotoClient alloc] init];
-		NSString *idxpath=[[object destDir]
-			stringByAppendingPathComponent: @"index.xml"];
+		// First, let's authenticate
+		BOOL authed=[pc authenticateTo:[object url] user:[object username]
+			passwd:[object password]];
+
+		if(authed) {
+			// Now set up the index path and get it
+			NSString *idxpath=[[object destDir]
+				stringByAppendingPathComponent: @"index.xml"];
 	
-		[pc fetchIndexFrom: [object url] to: idxpath];
-		[pc parseIndex: idxpath];
-		NSLog(@"Parsed %d photos", [[pc photos] count]);
+			[pc fetchIndexFrom: [object url] to: idxpath];
+			[pc parseIndex: idxpath];
+			NSLog(@"Parsed %d photos", [[pc photos] count]);
+		} else {
+			NSLog(@"Authentication failed");
+			NSRunAlertPanel(@"Authentication Failed",
+				[NSString stringWithFormat:@"Authentication failed for %@",
+					[object url]], @"OK", nil, nil);
+		}
 		[pc release];
     }
 }

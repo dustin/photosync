@@ -20,7 +20,7 @@
 
 }
 
--(void)authenticateTo:(NSString *)base user:(NSString *)u passwd:(NSString *)p;
+-(BOOL)authenticateTo:(NSString *)base user:(NSString *)u passwd:(NSString *)p;
 -(void)fetchIndexFrom:(NSString *)base to:(NSString *)path;
 
 // Parse the index
