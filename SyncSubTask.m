@@ -10,6 +10,10 @@
 #import "SyncTask.h"
 #import "Location.h"
 
+@interface SyncSubTaskDelegate
+-(void)completedTask:(id)sender;
+@end
+
 @implementation SyncSubTask
 
 -initWithName:(NSString *)n location:(Location *)l

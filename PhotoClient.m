@@ -46,7 +46,7 @@
 		[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
 	[bodyString release];
 
-	NSURLResponse *resp=nil;
+	NSHTTPURLResponse *resp=nil;
 	NSError *err=nil;
 	[NSURLConnection sendSynchronousRequest:theRequest
 		returningResponse:&resp error:&err];
