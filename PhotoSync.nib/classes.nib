@@ -1,0 +1,27 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {newLocation = id; performSync = id; rmLocation = id; }; 
+            CLASS = Controller; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                locEdit = id; 
+                locTable = id; 
+                progressIndicator = NSProgressIndicator; 
+                statusText = NSTextField; 
+                syncButton = NSButton; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {browse = id; cancel = id; save = id; }; 
+            CLASS = LocEditController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {destination = id; password = id; url = id; username = id; }; 
+            SUPERCLASS = NSWindowController; 
+        }, 
+        {CLASS = Locations; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}
