@@ -20,19 +20,17 @@
 	NSEnumerator *e=[[locTable dataSource] objectEnumerator];
     id object=nil;
     while(object = [e nextObject]) {
-		PhotoClient *pc=[[PhotoClient alloc] init];
+		NSString *idxpath=[[object destDir]
+			stringByAppendingPathComponent: @"index.xml"];
+
+		PhotoClient *pc=[[PhotoClient alloc] initWithIndexPath:idxpath];
 		// First, let's authenticate
 		BOOL authed=[pc authenticateTo:[object url] user:[object username]
 			passwd:[object password]];
 
 		if(authed) {
 			// Now set up the index path and get it
-			NSString *idxpath=[[object destDir]
-				stringByAppendingPathComponent: @"index.xml"];
-	
-			[pc fetchIndexFrom: [object url] to: idxpath];
-			[pc parseIndex: idxpath];
-			NSLog(@"Parsed %d photos", [[pc photos] count]);
+			[pc fetchIndexFrom: [object url]];
 		} else {
 			NSLog(@"Authentication failed");
 			NSRunAlertPanel(@"Authentication Failed",

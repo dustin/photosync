@@ -11,6 +11,7 @@
 
 @interface PhotoClient : NSObject {
 
+	NSString *indexPath;
 	NSString *el;
 	NSMutableDictionary *current;
 	NSMutableDictionary *keywords;
@@ -19,11 +20,13 @@
 
 }
 
+-initWithIndexPath:(NSString *)path;
+
 -(BOOL)authenticateTo:(NSString *)base user:(NSString *)u passwd:(NSString *)p;
--(void)fetchIndexFrom:(NSString *)base to:(NSString *)path;
+-(void)fetchIndexFrom:(NSString *)base;
 
 // Parse the index
--(void)parseIndex:(NSString *)path;
+-(void)parseIndex;
 
 -(NSDictionary *)keywords;
 -(NSSet *)photos;

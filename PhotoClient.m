@@ -7,13 +7,20 @@
 //
 
 #import "PhotoClient.h"
-#import "DownloadDelegate.h"
 
 @implementation PhotoClient
+
+-initWithIndexPath:(NSString *)path
+{
+	id rv=[super init];
+	indexPath=[path retain];
+	return rv;
+}
 
 -(void)dealloc
 {
 	NSLog(@"Deallocing %@", self);
+	[indexPath release];
 	[el release];
 	[current release];
 	[keywords release];
@@ -51,29 +58,33 @@
 	return(rv);
 }
 
--(void)fetchIndexFrom:(NSString *)base to:(NSString *)path
+-(void)fetchIndexFrom:(NSString *)base
 {
-	NSLog(@"Fetching index from %@ to %@", base, path);
+	NSLog(@"Fetching index from %@ to %@", base, indexPath);
 	NSURL *u=[[NSURL alloc] initWithString:
 		[base stringByAppendingString: @"/export"]];
 	NSURLRequest *theRequest=[NSURLRequest requestWithURL:u
 		cachePolicy:NSURLRequestReloadIgnoringCacheData
 		timeoutInterval:60.0];
-	DownloadDelegate *del=[[DownloadDelegate alloc] initWithDest: path];
 	NSURLDownload *dl=[[NSURLDownload alloc]
-		initWithRequest:theRequest delegate: del];
+		initWithRequest:theRequest delegate: self];
 	if(dl != nil) {
-		[dl setDestination:path allowOverwrite:YES];
+		[dl setDestination:indexPath allowOverwrite:YES];
 	} else {
 		NSLog(@"Can't instantiate download from %@.", u);
 	}
-	[del release];
 	[u release];
 }
 
--(void)parseIndex:(NSString *)path
+- (void)downloadDidFinish:(NSURLDownload *)download
 {
-	NSURL *u=[[NSURL alloc] initFileURLWithPath:path];
+	NSLog(@"Finished downloading %@, beginning parse", indexPath);
+	[self parseIndex];
+}
+
+-(void)parseIndex
+{
+	NSURL *u=[[NSURL alloc] initFileURLWithPath:indexPath];
 	NSXMLParser *xmlp=[[NSXMLParser alloc] initWithContentsOfURL: u];
 
 	[xmlp setDelegate: self];
@@ -85,6 +96,8 @@
 
 	[xmlp release];
 	[u release];
+
+	NSLog(@"Parsed %d photos", [photos count]);
 }
 
 -(NSDictionary *)keywords

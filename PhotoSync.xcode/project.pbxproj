@@ -9,8 +9,6 @@
 			children = (
 				DAF15AF107B1CC790031C5C1,
 				DAF15AF207B1CC790031C5C1,
-				DA1051F307B16436007CD7D2,
-				DA1051F407B16436007CD7D2,
 				DA1051E907B152A2007CD7D2,
 				DA1051EA07B152A2007CD7D2,
 				DAEA36B707B0D8D700C4E690,
@@ -293,7 +291,6 @@
 				DAEA36BD07B0D8EA00C4E690,
 				DAEA36BF07B0D8EA00C4E690,
 				DA1051EB07B152A2007CD7D2,
-				DA1051F507B16436007CD7D2,
 				DAF15AF307B1CC790031C5C1,
 			);
 			isa = PBXResourcesBuildPhase;
@@ -314,7 +311,6 @@
 				DAEA36BE07B0D8EA00C4E690,
 				DAEA36C007B0D8EA00C4E690,
 				DA1051EC07B152A2007CD7D2,
-				DA1051F607B16436007CD7D2,
 				DAF15AF407B1CC790031C5C1,
 			);
 			isa = PBXSourcesBuildPhase;
@@ -392,34 +388,6 @@
 		};
 		DA1051EC07B152A2007CD7D2 = {
 			fileRef = DA1051EA07B152A2007CD7D2;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		DA1051F307B16436007CD7D2 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			path = DownloadDelegate.h;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		DA1051F407B16436007CD7D2 = {
-			fileEncoding = 4;
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.objc;
-			path = DownloadDelegate.m;
-			refType = 4;
-			sourceTree = "<group>";
-		};
-		DA1051F507B16436007CD7D2 = {
-			fileRef = DA1051F307B16436007CD7D2;
-			isa = PBXBuildFile;
-			settings = {
-			};
-		};
-		DA1051F607B16436007CD7D2 = {
-			fileRef = DA1051F407B16436007CD7D2;
 			isa = PBXBuildFile;
 			settings = {
 			};
