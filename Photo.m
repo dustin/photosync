@@ -19,7 +19,7 @@
 	NSEnumerator *enumerator = [d keyEnumerator];
 	id key=nil;
 	while((key = [enumerator nextObject]) != nil) {
-		[self setValue: [d objectForKey:key] forKey:key];
+		[self takeValue: [d objectForKey:key] forKey:key];
 	}
 
 	NSMutableSet *kws=[[NSMutableSet alloc] init];
@@ -98,9 +98,9 @@
 	return(keywordStrings);
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key
+- (void)handleTakeValue:(id)value forUnboundKey:(NSString *)key
 {
-	NSLog(@"Warning!  Setting value (%@) for unknown key (%@)", value, key);
+	NSLog(@"Warning!  Taking value (%@) for unknown key (%@)", value, key);
 }
 
 -(NSString *)description
