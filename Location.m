@@ -23,6 +23,24 @@
 	return rv;
 }
 
+-(NSString *)urlinfo
+{
+	NSMutableString *rv=[[NSMutableString alloc] initWithCapacity:64];
+	// Leave it blank if we don't have a URL yet.
+	if(_url != nil && [_url length] > 0) {
+		NSString *un=_username;
+		if(un == nil || [un length] == 0) {
+			un=@"guest";
+		}
+		[rv appendFormat:@"%@@%@", un, _url];
+		if(_forUser != nil && [_forUser length] > 0) {
+			[rv appendFormat:@" (for %@)", _forUser];
+		}
+	}
+	[rv autorelease];
+	return(rv);
+}
+
 -(NSString *)description
 {
 	return([NSString stringWithFormat:@"<Location url=``%@'' rc=%u>",

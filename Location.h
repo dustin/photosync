@@ -23,6 +23,8 @@
 -initWithDict:(NSDictionary *)d;
 -(NSDictionary *)toDict;
 
+-(NSString *)urlinfo;
+
 -(BOOL)isActive;
 -(void)setActive:(BOOL)to;
 
