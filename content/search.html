@@ -30,32 +30,44 @@
 
 	<body>
 
-		<script language="JavaScript" src="searchdata.js"></script>
-		<script language="JavaScript" src="searchfun.js"></script>
+		<script type="text/javascript" src="searchdata.js"></script>
+		<script type="text/javascript" src="searchfun.js"></script>
 
-		<form name="bigform" method="POST" action=""
-			onsubmit="search(); return false;">
-			Keywords:
-			<input id="keywords" name="keywords" size="60" value=""
-				OnKeyUp="keyUp(this);"/>
-			<div style="font-size: x-small" id="keywordlist"><span/></div>
-			<div id="keywordmatches"><span/></div>
-			Newest images
-			<select id="sdir" name="sdir">
-				<option value="newfirst">first</option>
-				<option value="newlast">last</option>
-			</select>
-			<br/>
-			Results Per Page:
-			<select id="perpage" name="perpage">
-				<option value="10">10</option>
-				<option value="50" selected="selected">50</option>
-				<option value="100">100</option>
-			</select>
-			<br/>
-			<input type="submit" value="Search"/>
-			<input type="reset" value="Clear"
-				onclick="updateKwInfo(''); setResults('');"/>
+		<form method="post" action="" onsubmit="search(); return false;">
+			<fieldset>
+				<legend>Search for Photos</legend>
+				<label for="keywords">Keywords</label>
+				<div>
+					<input id="keywords" name="keywords" size="60" value=""
+						onkeyup="keyUp(this);"/>
+				</div>
+				<div style="font-size: x-small" id="keywordlist"><span/></div>
+				<div id="keywordmatches"><span/></div>
+				<label for="sdir">Newest images</label>
+
+				<div>
+				<select id="sdir" name="sdir">
+					<option value="newfirst">first</option>
+					<option value="newlast">last</option>
+				</select>
+				</div>
+
+				<label for="perpage">Results Per Page</label>
+				<div>
+				<select id="perpage" name="perpage">
+					<option value="10">10</option>
+					<option value="50" selected="selected">50</option>
+					<option value="100">100</option>
+				</select>
+				</div>
+
+				<div>
+					<input type="submit" value="Search"/>
+					<input type="reset" value="Clear"
+						onclick="updateKwInfo(''); setResults('');"/>
+				</div>
+
+			</fieldset>
 		</form>
 		<div id="found"><span/></div>
 	</body>

@@ -4,6 +4,15 @@ body,td,th {
     color: black;
 }
 
+h1 {
+	background: #99f;
+	color: white;
+}
+
+a {
+	color: green;
+}
+
 .hidden {
 	display: none;
 }
@@ -30,4 +39,19 @@ body,td,th {
 img {
     border: none;
 }
-    
+
+fieldset, select, input {
+	color: #33c;
+	font-size: large;
+}
+
+fieldset label {
+	float: left;
+	width: 180px;
+	text-align: right;
+}
+
+fieldset div {
+	margin-left: 190px;
+	margin-bottom: 3px;
+}
