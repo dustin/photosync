@@ -5,13 +5,47 @@
 	<head>
 		<title>Photos</title>
 		<link rel="stylesheet" href="style.css" />
+		<style type="text/css">
+			.hidden { display: none; }
+			.displayed { display: block; }
+		</style>
+		<script type="text/javascript">
+		// <![CDATA[
+			function init() {
+  			var years=document.getElementsByTagName("li");
+  			for(var i=0; i<years.length; i++) {
+    			if(years[i].id != undefined && years[i].id[0] == 'y') {
+      			years[i].getElementsByTagName("ul")[0].className="hidden";
+    			}
+  			}
+			}
+
+			function toggleDisplay(y) {
+  			var theYear=document.getElementById(y);
+  			var theChild=theYear.getElementsByTagName("ul")[0];
+  			if(theChild.className == 'hidden') {
+    			theChild.className='displayed';
+  			} else {
+    			theChild.className='hidden';
+  			}
+			}
+		// ]]>
+		</script>
 	</head>
-	<body>
+
+	<body onload="init()">
+
 		<h1>Search</h1>
-		<a href="search.html">Search</a>
+		<p>
+			<a href="search.html">Search</a>
+		</p>
+
 		<h1>Years</h1>
     <ul>
 			%YEARS%
+			</ul>
+			</li>
 		</ul>
+
 	</body>
 </html>

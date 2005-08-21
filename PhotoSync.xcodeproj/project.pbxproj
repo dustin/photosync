@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
+		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
+		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		DA1051EC07B152A2007CD7D2 /* PhotoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1051EA07B152A2007CD7D2 /* PhotoClient.m */; };
+		DA2A5B9107B5DFFE001380C1 /* SyncSubTask.m in Sources */ = {isa = PBXBuildFile; fileRef = DA12B7F407B36D6F005AA180 /* SyncSubTask.m */; };
+		DA3659BD07B0A1F800FBB3FF /* PhotoSync.nib in Resources */ = {isa = PBXBuildFile; fileRef = DA3659BC07B0A1F700FBB3FF /* PhotoSync.nib */; };
+		DA3659D107B0A41900FBB3FF /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3659CF07B0A41900FBB3FF /* Location.m */; };
+		DA5FABD507B5A92A002A72C1 /* PhotoSync.icns in Resources */ = {isa = PBXBuildFile; fileRef = DA5FABD407B5A92A002A72C1 /* PhotoSync.icns */; };
+		DA8FDEB507B4818300D5B6F7 /* page.html in Resources */ = {isa = PBXBuildFile; fileRef = DA8FDEB407B4818300D5B6F7 /* page.html */; };
+		DA8FDEBB07B481DE00D5B6F7 /* PageWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8FDEB907B481DE00D5B6F7 /* PageWriter.m */; };
+		DA8FDF1E07B4BBB400D5B6F7 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = DA8FDF1807B4BBB400D5B6F7 /* index.html */; };
+		DA8FDF1F07B4BBB400D5B6F7 /* month.html in Resources */ = {isa = PBXBuildFile; fileRef = DA8FDF1907B4BBB400D5B6F7 /* month.html */; };
+		DA8FDF2007B4BBB400D5B6F7 /* search.html in Resources */ = {isa = PBXBuildFile; fileRef = DA8FDF1A07B4BBB400D5B6F7 /* search.html */; };
+		DA8FDF2207B4BBB400D5B6F7 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = DA8FDF1C07B4BBB400D5B6F7 /* style.css */; };
+		DA8FDF2307B4BBB400D5B6F7 /* year.html in Resources */ = {isa = PBXBuildFile; fileRef = DA8FDF1D07B4BBB400D5B6F7 /* year.html */; };
+		DAE684B907B4C6970074D7CD /* searchfun.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAE684B807B4C6970074D7CD /* searchfun.txt */; };
+		DAEA36B807B0D8D700C4E690 /* Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA36B707B0D8D700C4E690 /* Controller.m */; };
+		DAEA36BE07B0D8EA00C4E690 /* Locations.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA36BA07B0D8EA00C4E690 /* Locations.m */; };
+		DAEA36C007B0D8EA00C4E690 /* LocEditController.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA36BC07B0D8EA00C4E690 /* LocEditController.m */; };
+		DAF071CD07B343B9006FA850 /* SyncTask.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF071CB07B343B9006FA850 /* SyncTask.m */; };
+		DAF15AF407B1CC790031C5C1 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF15AF207B1CC790031C5C1 /* Photo.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildStyle section */
+		4A9504CCFFE6A4B311CA0CBA /* Development */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		4A9504CDFFE6A4B311CA0CBA /* Deployment */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+/* End PBXBuildStyle section */
+
+/* Begin PBXFileReference section */
+		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		32CA4F630368D1EE00C91783 /* PhotoSync_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSync_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* PhotoSync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoSync.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA1051E907B152A2007CD7D2 /* PhotoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoClient.h; sourceTree = "<group>"; };
+		DA1051EA07B152A2007CD7D2 /* PhotoClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoClient.m; sourceTree = "<group>"; };
+		DA12B7F307B36D6F005AA180 /* SyncSubTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncSubTask.h; sourceTree = "<group>"; };
+		DA12B7F407B36D6F005AA180 /* SyncSubTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncSubTask.m; sourceTree = "<group>"; };
+		DA3659BC07B0A1F700FBB3FF /* PhotoSync.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = PhotoSync.nib; sourceTree = "<group>"; };
+		DA3659CE07B0A41900FBB3FF /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		DA3659CF07B0A41900FBB3FF /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		DA5FABD407B5A92A002A72C1 /* PhotoSync.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PhotoSync.icns; sourceTree = "<group>"; };
+		DA8FDEB407B4818300D5B6F7 /* page.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; name = page.html; path = content/page.html; sourceTree = "<group>"; };
+		DA8FDEB807B481DE00D5B6F7 /* PageWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageWriter.h; sourceTree = "<group>"; };
+		DA8FDEB907B481DE00D5B6F7 /* PageWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageWriter.m; sourceTree = "<group>"; };
+		DA8FDF1807B4BBB400D5B6F7 /* index.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; name = index.html; path = content/index.html; sourceTree = "<group>"; };
+		DA8FDF1907B4BBB400D5B6F7 /* month.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; name = month.html; path = content/month.html; sourceTree = "<group>"; };
+		DA8FDF1A07B4BBB400D5B6F7 /* search.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; name = search.html; path = content/search.html; sourceTree = "<group>"; };
+		DA8FDF1C07B4BBB400D5B6F7 /* style.css */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = style.css; path = content/style.css; sourceTree = "<group>"; };
+		DA8FDF1D07B4BBB400D5B6F7 /* year.html */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.html; name = year.html; path = content/year.html; sourceTree = "<group>"; };
+		DAE684B807B4C6970074D7CD /* searchfun.txt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; name = searchfun.txt; path = content/searchfun.txt; sourceTree = "<group>"; };
+		DAEA36B507B0D8CF00C4E690 /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		DAEA36B707B0D8D700C4E690 /* Controller.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = Controller.m; sourceTree = "<group>"; };
+		DAEA36B907B0D8EA00C4E690 /* Locations.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = Locations.h; sourceTree = "<group>"; };
+		DAEA36BA07B0D8EA00C4E690 /* Locations.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = Locations.m; sourceTree = "<group>"; };
+		DAEA36BB07B0D8EA00C4E690 /* LocEditController.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = LocEditController.h; sourceTree = "<group>"; };
+		DAEA36BC07B0D8EA00C4E690 /* LocEditController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = LocEditController.m; sourceTree = "<group>"; };
+		DAF071BB07B33A94006FA850 /* PhotoSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoSync.h; sourceTree = "<group>"; };
+		DAF071CA07B343B9006FA850 /* SyncTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncTask.h; sourceTree = "<group>"; };
+		DAF071CB07B343B9006FA850 /* SyncTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTask.m; sourceTree = "<group>"; };
+		DAF15AF107B1CC790031C5C1 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		DAF15AF207B1CC790031C5C1 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D11072E0486CEB800E47090 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DA8FDEB907B481DE00D5B6F7 /* PageWriter.m */,
+				DA12B7F407B36D6F005AA180 /* SyncSubTask.m */,
+				DAF071CB07B343B9006FA850 /* SyncTask.m */,
+				DAF15AF207B1CC790031C5C1 /* Photo.m */,
+				DA1051EA07B152A2007CD7D2 /* PhotoClient.m */,
+				DAEA36B707B0D8D700C4E690 /* Controller.m */,
+				DAEA36BA07B0D8EA00C4E690 /* Locations.m */,
+				DAEA36BC07B0D8EA00C4E690 /* LocEditController.m */,
+				DA3659CF07B0A41900FBB3FF /* Location.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1107320486CEB800E47090 /* PhotoSync.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* PhotoSync */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				DA9B86CE07B5F61900C9BDE5 /* Headers */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = PhotoSync;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* PhotoSync_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DA5FABD407B5A92A002A72C1 /* PhotoSync.icns */,
+				DAE684B807B4C6970074D7CD /* searchfun.txt */,
+				DA8FDF1807B4BBB400D5B6F7 /* index.html */,
+				DA8FDF1907B4BBB400D5B6F7 /* month.html */,
+				DA8FDF1A07B4BBB400D5B6F7 /* search.html */,
+				DA8FDF1C07B4BBB400D5B6F7 /* style.css */,
+				DA8FDF1D07B4BBB400D5B6F7 /* year.html */,
+				DA8FDEB407B4818300D5B6F7 /* page.html */,
+				DA3659BC07B0A1F700FBB3FF /* PhotoSync.nib */,
+				8D1107310486CEB800E47090 /* Info.plist */,
+				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA9B86CE07B5F61900C9BDE5 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA36B507B0D8CF00C4E690 /* Controller.h */,
+				DA3659CE07B0A41900FBB3FF /* Location.h */,
+				DAEA36B907B0D8EA00C4E690 /* Locations.h */,
+				DAEA36BB07B0D8EA00C4E690 /* LocEditController.h */,
+				DA8FDEB807B481DE00D5B6F7 /* PageWriter.h */,
+				DAF15AF107B1CC790031C5C1 /* Photo.h */,
+				DA1051E907B152A2007CD7D2 /* PhotoClient.h */,
+				DAF071BB07B33A94006FA850 /* PhotoSync.h */,
+				DA12B7F307B36D6F005AA180 /* SyncSubTask.h */,
+				DAF071CA07B343B9006FA850 /* SyncTask.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1107260486CEB800E47090 /* PhotoSync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAF15EC508B861F2004BE107 /* Build configuration list for PBXNativeTarget "PhotoSync" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PhotoSync_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = PhotoSync;
+				WRAPPER_EXTENSION = app;
+			};
+			dependencies = (
+			);
+			name = PhotoSync;
+			productInstallPath = "$(HOME)/Applications";
+			productName = PhotoSync;
+			productReference = 8D1107320486CEB800E47090 /* PhotoSync.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = DAF15EC908B861F2004BE107 /* Build configuration list for PBXProject "PhotoSync" */;
+			buildSettings = {
+			};
+			buildStyles = (
+				4A9504CCFFE6A4B311CA0CBA /* Development */,
+				4A9504CDFFE6A4B311CA0CBA /* Deployment */,
+			);
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* PhotoSync */;
+			projectDirPath = "";
+			targets = (
+				8D1107260486CEB800E47090 /* PhotoSync */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1107290486CEB800E47090 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				DA3659BD07B0A1F800FBB3FF /* PhotoSync.nib in Resources */,
+				DA8FDEB507B4818300D5B6F7 /* page.html in Resources */,
+				DA8FDF1E07B4BBB400D5B6F7 /* index.html in Resources */,
+				DA8FDF1F07B4BBB400D5B6F7 /* month.html in Resources */,
+				DA8FDF2007B4BBB400D5B6F7 /* search.html in Resources */,
+				DA8FDF2207B4BBB400D5B6F7 /* style.css in Resources */,
+				DA8FDF2307B4BBB400D5B6F7 /* year.html in Resources */,
+				DAE684B907B4C6970074D7CD /* searchfun.txt in Resources */,
+				DA5FABD507B5A92A002A72C1 /* PhotoSync.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D11072C0486CEB800E47090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				DA3659D107B0A41900FBB3FF /* Location.m in Sources */,
+				DAEA36B807B0D8D700C4E690 /* Controller.m in Sources */,
+				DAEA36BE07B0D8EA00C4E690 /* Locations.m in Sources */,
+				DAEA36C007B0D8EA00C4E690 /* LocEditController.m in Sources */,
+				DA1051EC07B152A2007CD7D2 /* PhotoClient.m in Sources */,
+				DAF15AF407B1CC790031C5C1 /* Photo.m in Sources */,
+				DAF071CD07B343B9006FA850 /* SyncTask.m in Sources */,
+				DA8FDEBB07B481DE00D5B6F7 /* PageWriter.m in Sources */,
+				DA2A5B9107B5DFFE001380C1 /* SyncSubTask.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C165DFE840E0CC02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DAF15EC608B861F2004BE107 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PhotoSync_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = PhotoSync;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = YES;
+			};
+			name = Development;
+		};
+		DAF15EC708B861F2004BE107 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PhotoSync_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = PhotoSync;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Deployment;
+		};
+		DAF15EC808B861F2004BE107 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PhotoSync_Prefix.pch;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_NAME = PhotoSync;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Default;
+		};
+		DAF15ECA08B861F2004BE107 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Development;
+		};
+		DAF15ECB08B861F2004BE107 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Deployment;
+		};
+		DAF15ECC08B861F2004BE107 /* Default */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Default;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DAF15EC508B861F2004BE107 /* Build configuration list for PBXNativeTarget "PhotoSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAF15EC608B861F2004BE107 /* Development */,
+				DAF15EC708B861F2004BE107 /* Deployment */,
+				DAF15EC808B861F2004BE107 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+		DAF15EC908B861F2004BE107 /* Build configuration list for PBXProject "PhotoSync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAF15ECA08B861F2004BE107 /* Development */,
+				DAF15ECB08B861F2004BE107 /* Deployment */,
+				DAF15ECC08B861F2004BE107 /* Default */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Default;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}

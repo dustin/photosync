@@ -139,6 +139,8 @@
 // Format for the index on the index page
 #define INDEX_INDEX_FMT \
 	@"<li><a href=\"pages/%@.html\">%@ (%d %@)</a></li>\n"
+#define INDEX_DECADE_FMT \
+	@"<li id=\"y%d\" onclick=\"toggleDisplay('y%d')\">%ds (%d %@)\n\t<ul>\n"
 // Format for the month list on a year page
 #define YEAR_MONTH_INDEX_FMT \
 	@"<li><a href=\"%@/%02d.html\">%02d (%d %@)</a></li>"
@@ -216,6 +218,8 @@
 	NSMutableString *yearIdx=[[NSMutableString alloc] initWithCapacity:256];
 	[indexIdx setString:@""];
 
+	int decade=0;
+
 	e=[years objectEnumerator];
 	while(year = [e nextObject]) {
 		[yearIdx setString:@""];
@@ -224,6 +228,26 @@
 		NSString *yearFile=[[NSString alloc] initWithFormat:@"%@/pages/%@.html",
 			[location destDir], year];
 		[self ensureDir:yearDir];
+
+		int yearInt=[year intValue];
+		if(((yearInt / 10) * 10) != decade) {
+
+			if(decade != 0) {
+				[indexIdx appendString: @"</ul></li>\n"];
+			}
+
+			decade=((yearInt / 10) * 10);
+			int decadeCount=0;
+			int i=0;
+			for(i=0; i<10; i++) {
+				decadeCount+=[yearSet countForObject:
+					[NSString stringWithFormat:@"%d", decade+i]];
+			}
+
+			[indexIdx appendFormat:INDEX_DECADE_FMT,
+				decade, decade, decade, decadeCount,
+					(decadeCount == 1 ?  @"image":@"images")];
+		}
 
 		// Set up the index line
 		int yearCount=[yearSet countForObject: year];
