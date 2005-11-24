@@ -14,7 +14,6 @@
 	NSString *indexPath;
 	NSString *el;
 	NSMutableDictionary *current;
-	NSMutableDictionary *keywords;
 
 	NSMutableSet *photos;
 
@@ -30,7 +29,6 @@
 // Parse the index
 -(void)parseIndex;
 
--(NSDictionary *)keywords;
 -(NSSet *)photos;
 
 @end

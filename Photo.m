@@ -11,7 +11,7 @@
 
 @implementation Photo
 
--initWithDict:(NSDictionary *)d keywordMap:(NSDictionary *)kw
+-initWithDict:(NSDictionary *)d
 {
 	id rv=[super init];
 	NSAutoreleasePool *pool=[[NSAutoreleasePool alloc] init];
@@ -21,20 +21,6 @@
 	while((key = [enumerator nextObject]) != nil) {
 		[self takeValue: [d objectForKey:key] forKey:key];
 	}
-
-	NSMutableSet *kws=[[NSMutableSet alloc] init];
-	NSEnumerator *kwe=[keywords objectEnumerator];
-	key=nil;
-	while((key = [kwe nextObject]) != nil) {
-		id toAdd=[kw objectForKey: key];
-		if(toAdd != nil) {
-			[kws addObject: toAdd];
-		} else {
-			NSLog(@"Invalid keyword id:  %@ in map %@", key, kw);
-		}
-	}
-	keywordStrings=[[NSSet alloc] initWithSet:(NSSet *)kws];
-	[kws release];
 
 	NSArray *parts=[taken componentsSeparatedByString:@"-"];
 	year=[[parts objectAtIndex:0] intValue];
@@ -123,7 +109,6 @@
 	[extension release];
 	[cat release];
 
-	[keywords release];
 	[keywordStrings release];
 	[super dealloc];
 }
@@ -260,13 +245,13 @@
 }
 
 - (NSSet *)keywords {
-    return [[keywords retain] autorelease];
+    return [[keywordStrings retain] autorelease];
 }
 
 - (void)setKeywords:(NSSet *)newKeywords {
-    if (keywords != newKeywords) {
-        [keywords release];
-        keywords = [newKeywords copy];
+    if (keywordStrings != newKeywords) {
+        [keywordStrings release];
+        keywordStrings = [newKeywords copy];
     }
 }
 

@@ -24,7 +24,6 @@
 	[indexPath release];
 	[el release];
 	[current release];
-	[keywords release];
 	[photos release];
 	[super dealloc];
 }
@@ -141,11 +140,6 @@
 	[pool release];
 }
 
--(NSDictionary *)keywords
-{
-	return(keywords);
-}
-
 -(NSSet *)photos
 {
 	return(photos);
@@ -156,7 +150,6 @@
 //
 
 #define PS_SEC_NONE 0
-#define PS_SEC_KEYWORDS 1
 #define PS_SEC_ALBUM 2
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
@@ -172,24 +165,12 @@
 		section=PS_SEC_ALBUM;
 		[photos release];
 		photos = [[NSMutableSet alloc] initWithCapacity:5];
-	} else if([@"keywordmap" isEqualToString: elementName]) {
-		section=PS_SEC_KEYWORDS;
-		[keywords release];
-		keywords = [[NSMutableDictionary alloc] initWithCapacity:5];
 	} else if([@"keywords" isEqualToString: elementName]) {
 		NSMutableSet *ms=[[NSMutableSet alloc] initWithCapacity:5];
 		[current setObject: ms forKey:@"keywords"];
 		[ms release];
 	} else if([@"keyword" isEqualToString: elementName]) {
-		NSString *kwid=[attributeDict objectForKey: @"id"];
-		NSNumber *n=[[NSNumber alloc] initWithInt: [kwid intValue]];
-		if(section == PS_SEC_KEYWORDS) {
-			[keywords setObject: [attributeDict objectForKey: @"word"]
-				forKey: n];
-		} else {
-			[[current objectForKey: @"keywords"] addObject: n];
-		}
-		[n release];
+		[[current objectForKey: @"keywords"] addObject: [attributeDict objectForKey: @"word"]];
 	} else {
 		[el release];
 		el = [elementName retain];
@@ -200,7 +181,7 @@
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
 	if([@"photo" isEqualToString: elementName]) {
-		Photo *photo=[[Photo alloc] initWithDict:current keywordMap:keywords];
+		Photo *photo=[[Photo alloc] initWithDict:current];
 		// NSLog(@"Finished %@", photo);
 		[photos addObject:photo];
 		[current release];

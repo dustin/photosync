@@ -29,12 +29,10 @@
 	NSString *extension;
 	NSString *cat;
 
-	NSSet *keywords;
 	NSSet *keywordStrings;
-
 }
 
--initWithDict:(NSDictionary *)d keywordMap:(NSDictionary *)kw;
+-initWithDict:(NSDictionary *)d;
 -(NSString *)dims;
 -(NSSet *)keywordStrings;
 
