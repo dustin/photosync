@@ -151,6 +151,7 @@
 
 #define PS_SEC_NONE 0
 #define PS_SEC_ALBUM 2
+#define PS_SEC_ANNOTATIONS 3
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName
@@ -171,6 +172,8 @@
 		[ms release];
 	} else if([@"keyword" isEqualToString: elementName]) {
 		[[current objectForKey: @"keywords"] addObject: [attributeDict objectForKey: @"word"]];
+	} else if([@"annotations" isEqualToString: elementName]) {
+		section=PS_SEC_ANNOTATIONS;
 	} else {
 		[el release];
 		el = [elementName retain];
@@ -189,12 +192,14 @@
 		[el release];
 		el=nil;
 		[photo release];
+	} else if([@"annotations" isEqualToString: elementName]) {
+		section=PS_SEC_ALBUM;
 	}
 }
 
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-	if(el != nil && current != nil) {
+	if(section != PS_SEC_ANNOTATIONS && el != nil && current != nil) {
 		NSString *trimmed=[string
 			stringByTrimmingCharactersInSet:
 				[NSCharacterSet whitespaceAndNewlineCharacterSet]];
