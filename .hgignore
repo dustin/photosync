@@ -1,0 +1,7 @@
+(^|/)\_darcs($|/)
+(^|/)\.hg($|/)
+(^|/)\.hgtags($|/)
+^PhotoSync.log$
+^PhotoSync.state$
+^PhotoSync.state.old$
+^PhotoSync.state.journal$
